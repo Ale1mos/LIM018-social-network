@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export const login = () => {
   const homeDiv = document.createElement('div')
   homeDiv.textContent = "Bienvenida al Login"
@@ -11,6 +10,4 @@ export const login = () => {
   
   return homeDiv;
 }
-=======
-import { login } from "../lib";
->>>>>>> firebase-configuracion
+// import { login } from "../lib";
