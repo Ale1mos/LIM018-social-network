@@ -16,9 +16,11 @@
 
 // const component = routes[window.location.pathname]
 // rootDiv.appendChild(component())
+import{ changeview } from './view-controller/index-controller.js'
 
 const init = () => {
-  window.addEventListener('hashchange' , () => console.log(window.location.hash))
+  changeview(window.location.hash)
+  window.addEventListener('hashchange' , () => changeview(window.location.hash))
 }
 
 window.addEventListener('load', init)
