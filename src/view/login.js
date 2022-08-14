@@ -1,8 +1,11 @@
+import {signInWithEmailAndPassword,auth} from "../lib/firebase.js"
+import{ changeview } from '../view-controller/index-controller.js'
+import { signInWithEmailPassword} from '../lib/auth.js'
+
 export default() => {
   const viewLogin = `
-  <h2>Bienvenida iniciar sesion</h2>
+  <h2>Bienvenida inicia sesion</h2>
   <section class="login">
-  <h2>bienvenidos a login</h2>
 
   <img id="logoPeruvian" src="./images/depositphotos_59216213-stock-illustration-peruvian-food-illustration.jpg" alt="">
   <div id="form">
@@ -12,10 +15,10 @@ export default() => {
 
     <br><br>
 
-    <button type="" id="login" value="Registrarse">Iniciar Sesión</button>
+    <button id="login" value="iniciar">Iniciar Sesión</button>
     <img id="google" src="./images/logoGoogle.png" alt="">
     <br><br>
-    <button type="" value="Registrarse"><a href="#/register">Registrarse</a></button>
+    <button value="registrarse"><a href="#/register">Registrarse</a></button>
   </div>
   </section>
   `
@@ -23,5 +26,18 @@ export default() => {
   const divElement = document.createElement('div')
   divElement.innerHTML = viewLogin;
 
+  divElement.querySelector("#login").addEventListener("click", function(){
+    const email = document.getElementById("email").value
+    const password = document.getElementById("password").value
+    console.log(email ,password)
+    signInWithEmailPassword( email, password)
+    .then(function(x){window.location.href = "#/home";
+    // console.log(x)
+    // email.innerHTML =
+  })
+    .catch(function(error){console.log("hola",error)})
+    // .catch(error)=>{console.log(error)}
+})
   return divElement
-}
+  }
+

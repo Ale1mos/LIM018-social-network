@@ -3,7 +3,7 @@ import { componentes } from "../view/index-view.js"
 const changeview = (route) => {
   const container = document.getElementById("container")
   container.innerHTML = ''
-
+  console.log(route)
   switch (route){
     case '':
       {return container.appendChild( componentes.login())}
@@ -12,7 +12,7 @@ const changeview = (route) => {
     case '#/register': 
       {return container.appendChild( componentes.register())}
     case '#/home':
-      {return container.appendChild( componentes.ho())}
+      container.appendChild(componentes.home.template());componentes.home.init();
     case '#/user':
       {return container.appendChild( componentes.user())}
     case '#/out':
@@ -25,3 +25,4 @@ const changeview = (route) => {
 }
 
 export{changeview}
+

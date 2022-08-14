@@ -1,12 +1,17 @@
+import {createUserWithEmailAndPassword,auth} from "../lib/firebase.js"
+import{ changeview } from '../view-controller/index-controller.js'
+ 
+
 export default() => {
   const viewRegister = `
-  <h2>Bienvenida iniciar sesion</h2>
+  <h2>Bienvenida regístrate</h2>
   <section class="login">
-  <h2>bienvenidos a login</h2>
 
-  <img id="logoPeruvian" src="./images/depositphotos_59216213-stock-illustration-peruvian-food-illustration.jpg" alt="">
+  <img id="logoPeruvianHome" src="./images/depositphotos_59216213-stock-illustration-peruvian-food-illustration.jpg" alt="">
+  <div id="errorMessage">
+  </div>
   <div id="form">
-    <input type="" id="password" placeholder="Nombre">
+    <input type="" id="" placeholder="Nombre">
     <br><br>
     <input type="text" id="email" placeholder="Correo">
     <br><br>
@@ -23,5 +28,35 @@ export default() => {
   const divElement = document.createElement('div')
   divElement.innerHTML = viewRegister;
 
+  
+  divElement.querySelector("#btnRegister").addEventListener("click", function(){
+    const email = document.getElementById("email").value
+    const password = document.getElementById("password").value
+    console.log(email ,password)
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(function(x){window.location.href = "#/login";})
+    // .catch(function(error){console.log("hola",error)})
+    .catch(function(error){
+      const errorM = error.message;
+      errorMessage.setAttribute("class","errorMe")
+      switch (errorM){
+        case "Firebase: Error(auth/invalid-email).":{
+          errorMessage.textContent= "Ingrese un correo electrónico válido"
+          break; 
+        }
+        case "Firebase: Error(auth/wrong-password).":{
+          errorMessage.textContent= "Ingrese una clave válida"
+          break; 
+        }
+      }
+    })
+  })
   return divElement
 }
+
+// const email = document.getElementById("email").value
+// const password = document.getElementById("password").value
+
+// document.getElementById("btnRegister").addEventListener("click", function(){
+  
+// })

@@ -1,13 +1,13 @@
 *{
   margin: 0;
+  /* border: solid green; */
+
 }
 
 #barra{
   background-color: #EFEFEF;
-  /* width: 100px; */
-  height: 80px;
-  /* border: solid red; */
-  /* list-style-type: none; */
+  /* border: solid blue; */
+  list-style-type: none;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -20,14 +20,15 @@
   align-items: center
 }
 
-#logito{
+/* logito{
   width: 4%;
-  margin: 80%;
-}
+  margin: 800%;
+} */
 
 a{
   margin: 15px;
 }
+
 
 /* main{
   background-color: rgb(227, 215, 76);
@@ -40,11 +41,26 @@ a{
 } */
 
 .muro{
-  background-color: white;
-  width: 600px;
-  margin-left:35% ;
+  background-color: rgb(136, 113, 113);
+  width: 100%;
+  height: 700px;
+
+
 }
 
+#timeLine{
+  background-color: aqua;
+  border: solid yellow;
+  width: 100%;
+  height: 700px;
+  /* margin-left: 30%; */
+}
+
+#post{
+  width: 70%;
+  /* margin: 20%; */
+  /* height: 70px; */
+}
 
 section{
   display: flex;
@@ -57,9 +73,13 @@ section{
 /* REGISTRO Y LOGIN */
 
 #logoPeruvian{
-  /* height: 70%; */
   margin: 17%;
   margin-top: 20%;
+}
+
+#logoPeruvianHome{
+  width: 5%;
+  margin-right: 40%;
 }
 
 #google{

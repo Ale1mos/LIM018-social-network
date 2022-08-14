@@ -1,9 +1,15 @@
 // Import the functions you need from the SDKs you need
+// tienen que ser los mismos números
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
-import { getAuth,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
-
-
-import { } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js"
+import { getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
+// import {getFirestore} from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js';
+// import { } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-firestore.js"
+import { getFirestore,
+          collection,
+          addDoc,
+          getDocs
+         } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js"
+// import { title } from "../view/home";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -20,9 +26,23 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-export {
-  signInWithEmailAndPassword
-}
+
+
+const db = getFirestore()
+
+export const saveTask = (title,description)=>
+  
+  addDoc(collection(db, 'tasks'),{ title,description });
+  // console.log(title,description)
+
+export const getTasks = () => getDocs(collection(db,'tasks'))
+
+
+  export {
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    getFirestore,
+  }
 
 
 
