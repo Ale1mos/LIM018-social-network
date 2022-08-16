@@ -21,7 +21,7 @@ export default () => {
     <button type="button" id="btnRegister">Registrarse</button>
     <br><br>
     <button type="button" id="btnIniciar"><a href="#/login">Iniciar sesión</a></button>
-    <img id="google" src="./images/logoGoogle.png" alt="">
+    
   </div>
   </section>
   `;

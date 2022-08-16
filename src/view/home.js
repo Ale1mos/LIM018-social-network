@@ -18,12 +18,13 @@ const viewHome = {
       
       <body class="muro">
         <form id="time-Line">
-
-          <input type="text" id = "postTitle" placeholder="Título">
-          <textarea id="post" placeholder="Escribe aquí"></textarea><br>
-          <div id="btnPost">
-          <button id="btnPublicar">Publicar</button><br>
-          <button id="btnCancelar">Cancelar</button>
+          <div id="containerTitlePost">
+            <input type="text" id = "postTitle" placeholder="Título">
+            <textarea id="post" placeholder="Escribe aquí"></textarea><br>
+          </div>
+          <div id="containerbtnPost">
+            <button id="btnPublicar">Publicar</button><br>
+            <button id="btnCancelar">Cancelar</button>
           </div>
         </form>
     
@@ -50,7 +51,7 @@ const viewHome = {
       querySnapshot.forEach(doc=>{
         const task = doc.data()
         html +=`
-        <div id="containerPost">
+        <div id="containerComment">
           <img src="../images/fotoPerfil.webp" alt="">
           <p id="titleComment">${task.title}</p>
           <p id="descripComment">${task.description}</p>

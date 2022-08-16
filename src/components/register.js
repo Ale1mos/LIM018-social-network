@@ -1,12 +1,12 @@
-export const register = () => {
-  const homeDiv = document.createElement('div')
-  homeDiv.textContent = "Bienvenida al Registro"
+// export const register = () => {
+//   const homeDiv = document.createElement('div')
+//   homeDiv.textContent = "Bienvenida al Registro"
   
-  const buttonHome = document.createElement('button')
+//   const buttonHome = document.createElement('button')
   
-  buttonHome.textContent = 'Regresar al Home'
+//   buttonHome.textContent = 'Regresar al Home'
   
-  homeDiv.appendChild(buttonHome)
+//   homeDiv.appendChild(buttonHome)
   
-  return homeDiv;
-}
+//   return homeDiv;
+// }

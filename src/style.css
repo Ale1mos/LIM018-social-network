@@ -5,10 +5,14 @@
 }
 
 #barra{
-  background-color: #EFEFEF;
+  background-color: #ffffff;
   /* border: solid blue; */
+  /* box-shadow: 4px 1px 10px; */
+  /* border: solid rgb(185, 184, 184); */
   list-style-type: none;
+  appearance: none;
   margin: 0;
+  margin-bottom: 10px;
   padding: 0;
   width: 100%;
   display: flex;
@@ -25,12 +29,19 @@
   margin: 800%;
 } */
 
-a{
+#barra a{
+  
   margin: 15px;
+  /* list-style-type: none;
+  appearance: none; */
+  list-style: none;
+  text-decoration: none;
+
 }
 
-.muro{
-  background-color: rgb(136, 113, 113);
+body{
+  background-image: url("./images/fondo_muro1.jpg");
+  /* background-color: #e1c7c7; */
   width: 100%;
   height: 700px;
 
@@ -45,29 +56,49 @@ a{
   /* margin-left: 30%; */
 }
 
+#containerTitlePost{
+  margin: 12px;
+  background-color: #c57e7e;
+  border-radius: 8px;
+  box-shadow: 4px 0px 15px;
+  
+}
+
 #postTitle{
-  margin: 10px;
+  /* margin: 10px,50px,5px,5px; */
+  margin: 5px;
+
+  
+  width: 95%;
 
 }
 
 #post{
-  width: 70%;
-  margin: 10px;
+  width: 95%;
+  /* height: 100px; */
+  height: 10ch;
+  margin: 5px;
   /* margin: 20%; */
   /* height: 70px; */
 }
 
-#containerPost{
+#containerComment{
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin: 15px;
+  box-shadow: 4px 0px 15px;
+  background-color: #ece4dd;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+
+
   /* align-items:center ; */
 }
 
-#containerPost img{
-  width: 15%;
-  margin: 5px;
+#containerComment img{
+  width: 13%;
+  margin: 12px;
   border-radius: 60%;
 }
 
@@ -79,31 +110,46 @@ a{
   font-size: 18px; 
   font-weight: 400; 
   text-align: center; 
-  background: #bd5656; 
-  margin: 0 0 25px; 
+  background: #ce8686; 
+  /* margin: 0 0 25px;  */
+  margin: 12px;
+  /* width: 80%; */
+  /* box-shadow: 4px 0px 15px; */
+
   /* overflow: hidden;  */
   padding: 20px; 
   border-radius: 35px 0px 35px 0px; 
   /* -moz-border-radius: 35px 0px 35px 0px; 
   -webkit-border-radius: 35px 0px 35px 0px;  */
-  border: 2px solid #5878ca;
-
+  /* border: 2px solid #5878ca; */
   /* margin: 7px; */
 }
 
-#btnPost{
+#containerbtnPost{
   display: flex;
   flex-direction: row;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
 }
 
-#btnPublicar{
+#containerbtnPost button{
+  
   margin: 7px;
+  /* appearance: none; */
+  background-color: #d2bc2d;
+  border: solid #d2bc2d;
+  border-radius: 4px;
+  box-shadow: 4px 0px 15px;
+
+  /* -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s; */
 }
 
-#btnCancelar{
-  margin: 7px;
+#containerbtnPost button:hover {
+  background-color: #d2bc2d; 
+  color: white;
 }
-
 
 section{
   display: flex;
@@ -125,6 +171,11 @@ section{
   margin-right: 40%;
 }
 
+/* #btnContainerlogin{
+  display: flex;
+  flex-direction: row;
+  border: solid blue;
+} */
 #google{
   width: 8%;
 }
