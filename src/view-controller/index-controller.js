@@ -1,28 +1,28 @@
-import { componentes } from "../view/index-view.js"
+/* eslint-disable no-fallthrough */
+import { componentes } from '../view/index-view.js';
 
 const changeview = (route) => {
-  const container = document.getElementById("container")
-  container.innerHTML = ''
-  console.log(route)
-  switch (route){
+  const container = document.getElementById('container');
+  container.innerHTML = '';
+  // console.log(route)
+  switch (route) {
     case '':
-      {return container.appendChild( componentes.login())}
+    { return container.appendChild(componentes.login()); }
     case '#/login':
-      {return container.appendChild( componentes.login())}
-    case '#/register': 
-      {return container.appendChild( componentes.register())}
+    { return container.appendChild(componentes.login()); }
+    case '#/register':
+    { return container.appendChild(componentes.register()); }
     case '#/home':
-      container.appendChild(componentes.home.template());componentes.home.init();
+      container.appendChild(componentes.home.template()); componentes.home.init();
     case '#/user':
-      {return container.appendChild( componentes.user())}
+    { return container.appendChild(componentes.user()); }
     case '#/out':
-      {return container.appendChild( componentes.login())}
-    
+    { return container.appendChild(componentes.login()); }
+
     default:
       break;
   }
-  console.log(route)
-}
+  console.log(route);
+};
 
-export{changeview}
-
+export { changeview };

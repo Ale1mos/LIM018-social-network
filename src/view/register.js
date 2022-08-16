@@ -1,8 +1,9 @@
-import {createUserWithEmailAndPassword,auth} from "../lib/firebase.js"
-import{ changeview } from '../view-controller/index-controller.js'
- 
+/* eslint-disable default-case */
+/* eslint-disable no-undef */
+import { createUserWithEmailAndPassword, auth } from '../lib/firebase.js';
+//import { changeview } from '../view-controller/index-controller.js';
 
-export default() => {
+export default () => {
   const viewRegister = `
   <h2>Bienvenida regístrate</h2>
   <section class="login">
@@ -23,40 +24,39 @@ export default() => {
     <img id="google" src="./images/logoGoogle.png" alt="">
   </div>
   </section>
-  `
+  `;
 
-  const divElement = document.createElement('div')
+  const divElement = document.createElement('div');
   divElement.innerHTML = viewRegister;
 
-  
-  divElement.querySelector("#btnRegister").addEventListener("click", function(){
-    const email = document.getElementById("email").value
-    const password = document.getElementById("password").value
-    console.log(email ,password)
+  divElement.querySelector('#btnRegister').addEventListener('click', () => {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    console.log(email, password);
     createUserWithEmailAndPassword(auth, email, password)
-    .then(function(x){window.location.href = "#/login";})
+      .then((x) => { window.location.href = '#/login'; })
     // .catch(function(error){console.log("hola",error)})
-    .catch(function(error){
-      const errorM = error.message;
-      errorMessage.setAttribute("class","errorMe")
-      switch (errorM){
-        case "Firebase: Error(auth/invalid-email).":{
-          errorMessage.textContent= "Ingrese un correo electrónico válido"
-          break; 
+      .catch((error) => {
+        const errorM = error.message;
+        errorMessage.setAttribute('class', 'errorMe');
+        switch (errorM) {
+          case 'Firebase: Error(auth/invalid-email).': {
+            errorMessage.textContent = 'Ingrese un correo electrónico válido';
+            break;
+          }
+          case 'Firebase: Error(auth/wrong-password).': {
+            errorMessage.textContent = 'Ingrese una clave válida';
+            break;
+          }
         }
-        case "Firebase: Error(auth/wrong-password).":{
-          errorMessage.textContent= "Ingrese una clave válida"
-          break; 
-        }
-      }
-    })
-  })
-  return divElement
-}
+      });
+  });
+  return divElement;
+};
 
 // const email = document.getElementById("email").value
 // const password = document.getElementById("password").value
 
 // document.getElementById("btnRegister").addEventListener("click", function(){
-  
+
 // })

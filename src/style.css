@@ -56,11 +56,44 @@ a{
   /* margin-left: 30%; */
 }
 
+#postTitle{
+  margin: 10px;
+
+}
+
 #post{
   width: 70%;
+  margin: 10px;
   /* margin: 20%; */
   /* height: 70px; */
 }
+
+#containerPost{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 15px;
+  /* align-items:center ; */
+}
+
+#containerPost img{
+  width: 10%;
+  border-radius: 60%;
+}
+
+#titleComment, #descripComment{
+  width: 200px;
+  border: solid rgb(255, 0, 0);
+  /* margin: 7px; */
+
+
+}
+
+
+
+
+
+
 
 section{
   display: flex;
@@ -89,4 +122,6 @@ section{
 #form{
   margin: 30%;
 }
+
+
 

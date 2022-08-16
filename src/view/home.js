@@ -1,9 +1,9 @@
 // export default () => {
-import{saveTask, getTasks} from "../lib/firebase.js"
+import { saveTask, getTasks, onGetTask } from '../lib/firebase.js';
 
-const viewHome ={
-    template:()=>{
-      const homeTemplate =`
+const viewHome = {
+  template: () => {
+    const homeTemplate = `
   
       <section class="">
         <nav>
@@ -16,7 +16,7 @@ const viewHome ={
         </nav>
       </section>
       
-      <section class="muro">
+      <body class="muro">
         <form id="time-Line">
 
           <input type="text" id = "postTitle" placeholder="Título">
@@ -25,58 +25,70 @@ const viewHome ={
           <button id="btnCancelar">Cancelar</button>
         </form>
     
-        <div id="containerHome">
+        <div id="containerHome"></div>
+    
+      </body>`;
+
+    const divElement = document.createElement('div');
+    divElement.innerHTML = homeTemplate;
+
+    return divElement;
+  },
+
+  init: async () => {
+
+    const containerPost = document.getElementById('containerHome');
+
+    // console.log("h")
+    // const querySnapshot = await getTasks();
+    onGetTask((querySnapshot) =>{
+
+    let html = '';
+
+      querySnapshot.forEach(doc=>{
+        const task = doc.data()
+        html +=`
+        <div id="containerPost">
+          <img src="../images/fotoPerfil.webp" alt="">
+          <p id="titleComment">${task.title}</p>
+          <p id="descripComment">${task.description}</p>
         </div>
-    
-      </section>`
-
-      const divElement = document.createElement('div')
-      divElement.innerHTML = homeTemplate;
-    
-      return divElement
-    },
-
-    
-    
-    init:()=>{
-
-      window.addEventListener('DOMContentLoaded',async() =>{
-        const querySnapshot = await getTasks()
-
-        // querySnapshot.forEach(doc=>{
-        //   console.log(doc)
-        // })
-        console.log(querySnapshot)
+        `
+        // console.log(doc.data())
+        // console.log(containerPost)
       })
+      containerPost.innerHTML= html
+    // console.log(querySnapshot)
+  })
 
-      const timeLine = document.getElementById("time-Line")
+    const timeLine = document.getElementById('time-Line');
 
-      timeLine.addEventListener('submit' ,(e) => {
-        e.preventDefault()
-        
-        const title = timeLine['postTitle']
-        const description = timeLine['post']
+    timeLine.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-        saveTask(title.value,description.value)
+      const title = timeLine.postTitle;
+      const description = timeLine.post;
 
-        timeLine.reset()
-      })
+      saveTask(title.value, description.value);
 
-      // console.log(timeLine)
-    }
-  } 
+      timeLine.reset();
+    });
 
-  export default viewHome;
-  // export {title}
-  
-  
+    
+
+    // console.log(timeLine)
+  },
+};
+
+export default viewHome;
+// export {title}
+
 // }
 
 // const btnPublicar= document.getElementById("btnPublicar")
 // const btnCancelar= document.getElementById("btnPublicar")
 
 // btnPublicar.addEventListener("click",() =>{
-//   const userPost = 
+//   const userPost =
 // })
 // borrar al final
-
