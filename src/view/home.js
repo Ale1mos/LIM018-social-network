@@ -21,8 +21,10 @@ const viewHome = {
 
           <input type="text" id = "postTitle" placeholder="Título">
           <textarea id="post" placeholder="Escribe aquí"></textarea><br>
+          <div id="btnPost">
           <button id="btnPublicar">Publicar</button><br>
           <button id="btnCancelar">Cancelar</button>
+          </div>
         </form>
     
         <div id="containerHome"></div>

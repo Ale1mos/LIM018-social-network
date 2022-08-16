@@ -16,7 +16,7 @@ export default () => {
     <br><br>
 
     <button id="login" value="iniciar">Iniciar Sesión</button>
-    <img id="google" src="./images/logoGoogle.png" alt="">
+    
     <br><br>
     <button value="registrarse"><a href="#/register">Registrarse</a></button>
   </div>
@@ -27,6 +27,8 @@ export default () => {
   divElement.innerHTML = viewLogin;
 
   divElement.querySelector('#login').addEventListener('click', () => {
+    // const google = document.querySelector("#google")
+    // google.style.display= "none"
     
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
