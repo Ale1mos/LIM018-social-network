@@ -1,6 +1,9 @@
 // export default () => {
-import { saveTask, getTasks, onGetTask } from '../lib/firebase.js';
 
+import { saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask } from '../lib/firebase.js';
+
+let editStatus = false;
+let id = '';
 const viewHome = {
   template: () => {
     const homeTemplate = `
@@ -45,22 +48,62 @@ const viewHome = {
     // console.log("h")
     // const querySnapshot = await getTasks();
     onGetTask((querySnapshot) =>{
-
     let html = '';
 
       querySnapshot.forEach(doc=>{
         const task = doc.data()
+        // console.log(doc.id)
         html +=`
         <div id="containerComment">
           <img src="../images/fotoPerfil.webp" alt="">
           <p id="titleComment">${task.title}</p>
           <p id="descripComment">${task.description}</p>
+          <button class ='btn-delete' data-id="${doc.id}">Eliminar</button>
+          <button class ='btn-edit' data-id="${doc.id}">Editar</button>
+
         </div>
         `
         // console.log(doc.data())
         // console.log(containerPost)
-      })
+      });
       containerPost.innerHTML= html
+
+      const btnsDelete = containerPost.querySelectorAll('.btn-delete');
+      // console.log(btnDelete)
+
+      btnsDelete.forEach(btn => {
+        btn.addEventListener('click',({target:{dataset}})=>{
+          deleteTask(dataset.id)
+          // console.log(dataset.id)
+          // console.log('hola')
+        })
+      })
+
+      
+      const btnsEdit = containerPost.querySelectorAll('.btn-edit');
+      btnsEdit.forEach(btn=>{
+        btn.addEventListener('click', e =>{
+          console.log(e.target.dataset.id)
+          // console.log(e)
+          getTask (e.target.dataset.id).then(doc=>{
+            // console.log(doc.data())
+          const task = doc.data()
+
+          timeLine['postTitle'].value = task.title
+          timeLine['post'].value = task.description
+
+          editStatus = true
+
+          id = doc.id
+
+          timeLine['btnPublicar'].innerText = 'Actualizar'
+
+          })
+          // console.log(doc.data()) (no figura en consola lo esperado)
+        })
+      })
+      
+
     // console.log(querySnapshot)
   })
 
@@ -71,8 +114,16 @@ const viewHome = {
 
       const title = timeLine.postTitle;
       const description = timeLine.post;
-
-      saveTask(title.value, description.value);
+      
+      if(!editStatus){
+        saveTask(title.value, description.value);
+      }else{
+        updateTask(id,{
+          title:title.value,
+          description:description.value,
+        });
+        editStatus = false;
+      }
 
       timeLine.reset();
     });

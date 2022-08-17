@@ -9,7 +9,12 @@ import {
   collection,
   addDoc,
   getDocs,
-  onSnapshot
+  onSnapshot,
+  deleteDoc,
+  getDoc,
+  updateDoc,
+  doc
+
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 // import { title } from "../view/home";
 // Your web app's Firebase configuration
@@ -37,6 +42,13 @@ export const getTasks = () => getDocs(collection(db, 'tasks'));
 // console.log(getDocs);
 
 export const onGetTask = (callback) => onSnapshot(collection(db, 'tasks'),callback)
+
+export const deleteTask = id => deleteDoc(doc(db, 'tasks', id));
+
+export const getTask = id => getDoc(doc(db, 'tasks', id));
+
+export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id),newFields);
+
 
 export {
   signInWithEmailAndPassword,
