@@ -5,7 +5,7 @@ export default() => {
   const divElement = document.createElement('div');
   divElement.innerHTML = viewUser;
 
-  return divElement;
+  return divElement;  
 };
 
 {/* <h2>Bienvenida aquí al viewUser</h2>

@@ -1,6 +1,6 @@
 // export default () => {
 
-import { saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask } from '../lib/firebase.js';
+import { saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask, userCollection, onAuthObserver } from '../lib/firebase.js';
 
 let editStatus = false;
 let id = '';
@@ -41,7 +41,27 @@ const viewHome = {
     return divElement;
   },
 
-  init: async () => {
+  init: () => {
+    let currentUser;
+
+    // Traer el nombre de usuario, (el observador)
+    function authCallBack(user) {
+      currentUser = user; // Usuario actual
+      console.log(currentUser);
+      // const userPerfil = document.querySelector('#currentName');
+      // userPerfil.innerHTML = currentUser.displayName;
+
+      // const photoUser = document.querySelector('.photo-user');
+      // const photoUserPerfil = document.querySelector('.photo-user-perfil');
+
+      // photoUser.setAttribute('src', user.photoURL); // Cambia el contenido src x la foto
+      // photoUserPerfil.setAttribute('src', user.photoURL);
+      // if (user.photoURL == null) {
+      //   photoUser.setAttribute('src', '../img/photo-user.png'); // img x defecto
+      //   photoUserPerfil.setAttribute('src', '../img/photo-user.png'); // img x defecto
+      // }
+    }
+    onAuthObserver(authCallBack);
 
     const containerPost = document.getElementById('containerHome');
 
@@ -51,8 +71,10 @@ const viewHome = {
     let html = '';
 
       querySnapshot.forEach(doc=>{
+        console.log(querySnapshot)
         const task = doc.data()
-        // console.log(doc.id)
+        console.log(task)
+
         html +=`
         <div id="containerComment">
           <img src="../images/fotoPerfil.webp" alt="">
@@ -97,6 +119,8 @@ const viewHome = {
           id = doc.id
 
           timeLine['btnPublicar'].innerText = 'Actualizar'
+
+          // timeLine.reset();
 
           })
           // console.log(doc.data()) (no figura en consola lo esperado)

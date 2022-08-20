@@ -1,11 +1,13 @@
 // Import the functions you need from the SDKs you need
 // tienen que ser los mismos números
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 // import {getFirestore} from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js';
 // import { } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-firestore.js"
 import {
+  
   getFirestore,
+  setDoc,
   collection,
   addDoc,
   getDocs,
@@ -35,7 +37,9 @@ export const auth = getAuth(app);
 
 const db = getFirestore();
 
-export const saveTask = (title, description) => addDoc(collection(db, 'tasks'), { title, description });
+export const signInWithEmailPassword = (email, password) => signInWithEmailAndPassword(auth, email, password)
+
+export const saveTask = (title, description) => addDoc(collection(db, 'tasks'), { title, description});
 // console.log(title,description)
 
 export const getTasks = () => getDocs(collection(db, 'tasks'));
@@ -49,9 +53,28 @@ export const getTask = id => getDoc(doc(db, 'tasks', id));
 
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id),newFields);
 
+export const createUserWithEmailPassword = (email,password) => createUserWithEmailAndPassword(auth, email, password);
+// export const registerUser =()
+export const userCollection = (userId, name) => setDoc(doc(db, 'user', userId), {name});
+
+
+
+export const onAuthObserver = (callback, noCallback) => onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    console.log(user)
+    const diplayName = user.displayName;
+    console.log(diplayName)
+
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
 
 export {
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   getFirestore,
 };

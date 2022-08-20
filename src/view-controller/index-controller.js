@@ -1,5 +1,6 @@
 /* eslint-disable no-fallthrough */
 import { componentes } from '../view/index-view.js';
+// export {}
 
 const changeview = (route) => {
   const container = document.getElementById('container');

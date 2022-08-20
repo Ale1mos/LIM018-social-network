@@ -1,14 +1,15 @@
-import { signInWithEmailAndPassword, auth } from '../lib/firebase.js';
+// import { signInWithEmailAndPassword, auth } from '../lib/firebase.js';
 import { changeview } from '../view-controller/index-controller.js';
-import { signInWithEmailPassword } from '../lib/auth.js';
+import { signInWithEmailPassword } from '../lib/firebase.js';
 
 export default () => {
   const viewLogin = `
-  <h2>Bienvenida inicia sesion</h2>
   <section class="login">
 
-  <img id="logoPeruvian" src="./images/depositphotos_59216213-stock-illustration-peruvian-food-illustration.jpg" alt="">
+  
   <div id="form">
+    <h3 id="nameApp">PERUVIAN TASTE</h3>
+
     <input type="text" id="email" placeholder="Correo">
     <br><br>
     <input type="password" id="password" placeholder="Contraseña">
@@ -19,7 +20,7 @@ export default () => {
     <img id="google" src="./images/logoGoogle.png" alt="">
     <br><br>
     
-    <button value="registrarse"><a href="#/register">Registrarse</a></button>
+    <button value="registrarse" id="register"><a href="#/register">Registrarse</a></button>
     
   </div>
   </section>
