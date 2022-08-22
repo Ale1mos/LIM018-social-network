@@ -29,6 +29,25 @@
   margin: 800%;
 } */
 
+#userPhoto{
+  width: 20%;
+  border-radius: 140px;
+  margin: 100px;
+}
+
+#containerProfile{
+  /* display: flex; */
+  background: rgba(214, 210, 210, 0.43);
+  margin: 15%;
+  height: 380px;
+  width: 70%;
+  border-radius: 30px;
+}
+
+#userProfile{
+  margin: 12%;
+}
+
 #barra a{
   
   margin: 15px;
@@ -199,53 +218,42 @@ section{
 background: rgba(214, 210, 210, 0.43);
 }
 
-#email{
-  /* appearance: none;
+.inputData{
+  font-size: large;
   background: rgba(214, 210, 210, 0.43);
-  border: none;
-  border-radius: 30 px; */
-  background: rgba(217, 217, 217, 0.25);
-  border: 4px solid #FFFFFF;
   border-radius: 20px;
+  border: 4px solid #FFFFFF;
   position: absolute;
   width: 236px;
-  height: 54px;
+  height: 44px;
   left: 87px;
-  top: 281px;
-  /* box-sizing: border-box; */
-
-
 }
 
+#userName{
+  top: 191px;
+}
 
+#email{
+  top: 281px;
+}
 
 #password{
-  background: rgba(214, 210, 210, 0.43);
-  border-radius: 20px;
-  border: 4px solid #FFFFFF;
-  position: absolute;
-width: 236px;
-height: 54px;
-left: 87px;
-top: 370px;
-/* box-sizing: border-box; */
+  top: 370px;
 }
 
 #login{
   position: absolute;
-width: 173px;
-height: 34px;
-left: 124px;
-top: 491px;
-
-font-family: 'Kameron';
-font-style: normal;
-font-weight: 200;
-font-size: 20px;
-line-height: 38px;
-text-align: center;
-
-color: #403333;
+  width: 173px;
+  height: 34px;
+  left: 124px;
+  top: 491px;
+  /* font-family: 'Kameron';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 20px;
+  line-height: 38px;
+  text-align: center;
+  color: #403333; */
 }
 
 #register{
@@ -265,30 +273,53 @@ color: #403333;
   color: #403333;
 }
 
+.btns{
+  font-family: 'Kameron';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 20px;
+  line-height: 38px;
+  text-align: center;
+  color: #403333;
+  position: absolute;
+  width: 173px;
+  height: 34px;
+  left: 124px;
+}
+
+#btnIniciar{
+  top: 570px;
+}
+
+#btnRegister{
+  top: 500px;
+}
+
 #google{
   position: absolute;
   width: 8%;
-
-left: 190px;
-top: 540px;
+  left: 190px;
+  top: 540px;
 }
 
 #nameApp{
   position: absolute;
-width: 370px;
-height: 527px;
-left: 12px;
-top: 47px;
+  width: 370px;
+  height: 527px;
+  left: 12px;
+  top: 47px;
 
-font-family: 'Kameron';
-font-style: normal;
-font-weight: 400;
-font-size: 60px;
-line-height: 71px;
-text-align: center;
+  font-family: 'Kameron';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 71px;
+  text-align: center;
 
-color: #FFFFFF;
+  color: #FFFFFF;
 }
+
+
 
 
 

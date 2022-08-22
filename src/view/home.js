@@ -13,7 +13,7 @@ const viewHome = {
           <ul id="barra">
           <img id="logoPeruvianHome" src="./images/depositphotos_59216213-stock-illustration-peruvian-food-illustration.jpg" alt="hola">
             <li><a href="#/home">Inicio</a></li>
-            <li><a href="#/user">Perfil</a></li>
+            <li><a id="btnProfile" href="#/user">Perfil</a></li>
             <li><a href="#/out">Salir</a></li>
           </ul>
         </nav>
@@ -101,7 +101,12 @@ const viewHome = {
         })
       })
 
+      // const btnProfile = btnProfile.querySelector('#btnProfile');
+      // btnProfile.addEventListener('click',()=>{
+      //   console.log("hola")
+      // })
       
+
       const btnsEdit = containerPost.querySelectorAll('.btn-edit');
       btnsEdit.forEach(btn=>{
         btn.addEventListener('click', e =>{
@@ -147,6 +152,8 @@ const viewHome = {
           description:description.value,
         });
         editStatus = false;
+        timeLine['btnPublicar'].innerText = 'Publicar'
+
       }
 
       timeLine.reset();

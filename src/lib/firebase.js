@@ -5,7 +5,6 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, Go
 // import {getFirestore} from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js';
 // import { } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-firestore.js"
 import {
-  
   getFirestore,
   setDoc,
   collection,
@@ -16,7 +15,6 @@ import {
   getDoc,
   updateDoc,
   doc
-
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 // import { title } from "../view/home";
 // Your web app's Firebase configuration
@@ -55,17 +53,20 @@ export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id),newF
 
 export const createUserWithEmailPassword = (email,password) => createUserWithEmailAndPassword(auth, email, password);
 // export const registerUser =()
-export const userCollection = (userId, name) => setDoc(doc(db, 'user', userId), {name});
+export const userCollection = (userId, name, photo) => setDoc(doc(db, 'user', userId), {name, photo});
 
-
+export const getUser = (userId) => getDoc(doc(db, 'user', userId)).then((documentUser)=> documentUser.data());
+// getUser("3HnQc0Zp3mYiZjqxxkMXcWd8r2x2");
+// console.log(getUser("3HnQc0Zp3mYiZjqxxkMXcWd8r2x2")
+// )
 
 export const onAuthObserver = (callback, noCallback) => onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
-    console.log(user)
+    console.log(user);
     const diplayName = user.displayName;
-    console.log(diplayName)
+    console.log(diplayName);
 
     // ...
   } else {

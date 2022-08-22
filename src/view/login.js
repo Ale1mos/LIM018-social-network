@@ -10,17 +10,17 @@ export default () => {
   <div id="form">
     <h3 id="nameApp">PERUVIAN TASTE</h3>
 
-    <input type="text" id="email" placeholder="Correo">
+    <input type="text" id="email" class = "inputData" placeholder="Correo">
     <br><br>
-    <input type="password" id="password" placeholder="Contraseña">
+    <input type="password" id="password" class = "inputData" placeholder="Contraseña">
 
     <br><br>
 
-    <button id="login" value="iniciar">Iniciar Sesión</button>
+    <button id="login" value="iniciar" class="btns">Iniciar Sesión</button>
     <img id="google" src="./images/logoGoogle.png" alt="">
     <br><br>
     
-    <button value="registrarse" id="register"><a href="#/register">Registrarse</a></button>
+    <button value="registrarse" id="register" class="btns"><a href="#/register">Registrarse</a></button>
     
   </div>
   </section>
@@ -36,7 +36,11 @@ export default () => {
     const password = document.getElementById('password').value;
     console.log(email, password);
     signInWithEmailPassword(email, password)
-      .then((x) => {
+      .then((objectUser) => {
+        console.log(objectUser.user.uid);
+        const uidUser = objectUser.user.uid;
+        sessionStorage.setItem('USER', JSON.stringify(uidUser));
+
         window.location.href = '#/home';
         // console.log(x)
         // email.innerHTML =

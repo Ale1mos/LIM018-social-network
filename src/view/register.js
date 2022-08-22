@@ -7,23 +7,20 @@ import { createUserWithEmailPassword, userCollection } from '../lib/firebase.js'
 
 export default () => {
   const viewRegister = `
-  <h2>Bienvenida regístrate</h2>
   <section class="login">
-
-  
   <div id="form">
-    <input type="text" id="userName" placeholder="Nombre">
+    <h3 id="nameApp">PERUVIAN TASTE</h3>
+    <input type="text" id="userName" class = "inputData" placeholder="Nombre">
     <br><br>
-    <input type="email" id="email" placeholder="Correo">
+    <input type="email" id="email" class = "inputData" placeholder="Correo">
     <br><br>
-    <input type="password" id="password" placeholder="Contraseña">
+    <input type="password" id="password" class = "inputData" placeholder="Contraseña">
     <br><br>
     <div id ="errorM"></div>
     <br><br>
-    <button type="button" id="btnRegister">Registrarse</button>
+    <button type="button" id="btnRegister" class="btns">Registrarse</button>
     <br><br>
-    <button type="button" id="btnIniciar"><a href="#/login">Iniciar sesión</a></button>
-    
+    <button type="button" id="btnIniciar" class="btns"><a href="#/login">Iniciar sesión</a></button>
   </div>
   </section>
   `;
@@ -39,8 +36,8 @@ export default () => {
     createUserWithEmailPassword(email, password)
       .then((userCredential) => {
         console.log(userCredential.user.uid)
-        const userId = userCredential.user.uid
-        userCollection(userId, userName)
+        const userId = userCredential.user.uid;
+        userCollection(userId, userName, "../images/fotoPerfil.webp")
 
         window.location.href = '#/login'; })
     // .catch(function(error){console.log("hola",error)})
