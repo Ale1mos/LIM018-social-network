@@ -160,6 +160,11 @@ const viewHome = {
     });
 
     
+    function createDivs 
+
+
+
+    
 
     // console.log(timeLine)
   },

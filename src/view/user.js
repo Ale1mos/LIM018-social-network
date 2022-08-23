@@ -8,7 +8,7 @@ export default () => {
   <div id = "containerProfile">
   <img id="userPhoto" src="">
   <h2 id="userProfile"></h2>
-  <p id="userMail"></p>
+  <p id="userEmail"></p>
   <textarea id="bioProfile" placeholder="Cuéntame algo de ti"></textarea>  
 
   </div>
@@ -37,7 +37,9 @@ async function promiseGetUser(viewUser) {
   const usuario = await getUser(idUser);
   userProfile.textContent = usuario.name;
   userPhoto.src = usuario.photo;
+  
 
   // console.log(usuario);
+
 
 }
