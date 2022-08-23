@@ -82,13 +82,24 @@ const viewHome = {
           <p id="descripComment">${task.description}</p>
           <button class ='btn-delete' data-id="${doc.id}">Eliminar</button>
           <button class ='btn-edit' data-id="${doc.id}">Editar</button>
+          <button class ='btn-like' data-id="${doc.id}">Like</button>
 
         </div>
         `
         // console.log(doc.data())
         // console.log(containerPost)
       });
-      containerPost.innerHTML= html
+      containerPost.innerHTML = html;
+
+      let likes = {}
+      const btnsLike = containerPost.querySelectorAll('.btn-like');
+      btnsLike.forEach((btn) => {
+        btn.addEventListener('click',({target:{dataset}}) => {
+          likes[dataset.id] = [currentUser.id];
+
+          console.log(likes);
+        });
+      });
 
       const btnsDelete = containerPost.querySelectorAll('.btn-delete');
       // console.log(btnDelete)
