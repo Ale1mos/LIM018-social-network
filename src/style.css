@@ -29,14 +29,12 @@
   margin: 800%;
 } */
 
-#userPhoto{
-  width: 20%;
-  border-radius: 140px;
-  margin: 100px;
-}
-
 #containerProfile{
   /* display: flex; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: rgba(214, 210, 210, 0.43);
   margin: 15%;
   height: 500px;
@@ -44,18 +42,32 @@
   border-radius: 30px;
 }
 
+#userPhoto{
+  width: 60%;
+  border-radius: 140px;
+  /* margin: 10px; */
+  /* margin: 50px; */
+}
+
 #userProfile{
   margin: 12%;
+  text-align: center;
+}
+
+#userEmail{
+  font-size: large;
 }
 
 #barra a{
-  
   margin: 15px;
   /* list-style-type: none;
   appearance: none; */
   list-style: none;
   text-decoration: none;
+}
 
+#containerBarra{
+  border: solid red;
 }
 
 body{
@@ -81,16 +93,12 @@ body{
   background-color: #c57e7e;
   border-radius: 8px;
   box-shadow: 4px 0px 15px;
-  
 }
 
 #postTitle{
   /* margin: 10px,50px,5px,5px; */
   margin: 5px;
-
-  
   width: 95%;
-
 }
 
 #post{
@@ -111,8 +119,6 @@ body{
   background-color: #ece4dd;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5);
-
-
   /* align-items:center ; */
 }
 
@@ -187,7 +193,7 @@ section{
 }
 
 #logoPeruvianHome{
-  width: 5%;
+  width: 7%;
   margin-right: 40%;
 }
 

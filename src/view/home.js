@@ -1,6 +1,6 @@
 // export default () => {
 
-import { saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask, userCollection, onAuthObserver } from '../lib/firebase.js';
+import { saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask, userCollection, getUser, onAuthObserver } from '../lib/firebase.js';
 
 let editStatus = false;
 let id = '';
@@ -45,9 +45,9 @@ const viewHome = {
     let currentUser;
 
     // Traer el nombre de usuario, (el observador)
-    function authCallBack(user) {
-      currentUser = user; // Usuario actual
-      console.log(currentUser);
+    // function authCallBack(user) {
+      // currentUser = user; // Usuario actual
+      // console.log(currentUser);
       // const userPerfil = document.querySelector('#currentName');
       // userPerfil.innerHTML = currentUser.displayName;
 
@@ -60,24 +60,28 @@ const viewHome = {
       //   photoUser.setAttribute('src', '../img/photo-user.png'); // img x defecto
       //   photoUserPerfil.setAttribute('src', '../img/photo-user.png'); // img x defecto
       // }
-    }
-    onAuthObserver(authCallBack);
+    // }
+    // onAuthObserver(authCallBack);
 
     const containerPost = document.getElementById('containerHome');
 
     // console.log("h")
     // const querySnapshot = await getTasks();
-    onGetTask((querySnapshot) =>{
-    let html = '';
+    onGetTask(async(querySnapshot) =>{
+      containerPost.innerHTML = '';
+    
 
-      querySnapshot.forEach(doc=>{
-        console.log(querySnapshot)
-        const task = doc.data()
-        console.log(task)
-
-        html +=`
+      querySnapshot.forEach(async (doc) => {
+        console.log(querySnapshot);
+        const task = doc.data();
+        const usuario = await getUser(task.idUser);
+        // console.log(doc)
+        
+        containerPost.innerHTML +=`
         <div id="containerComment">
           <img src="../images/fotoPerfil.webp" alt="">
+          <div id ="NameUserPost">${usuario.name}</div>
+          
           <p id="titleComment">${task.title}</p>
           <p id="descripComment">${task.description}</p>
           <button class ='btn-delete' data-id="${doc.id}">Eliminar</button>
@@ -89,7 +93,6 @@ const viewHome = {
         // console.log(doc.data())
         // console.log(containerPost)
       });
-      containerPost.innerHTML = html;
 
       let likes = {}
       const btnsLike = containerPost.querySelectorAll('.btn-like');
@@ -106,7 +109,7 @@ const viewHome = {
 
       btnsDelete.forEach(btn => {
         btn.addEventListener('click',({target:{dataset}})=>{
-          deleteTask(dataset.id)
+          deleteTask(dataset.id);
           // console.log(dataset.id)
           // console.log('hola')
         })
@@ -127,25 +130,25 @@ const viewHome = {
             // console.log(doc.data())
           const task = doc.data()
 
-          timeLine['postTitle'].value = task.title
-          timeLine['post'].value = task.description
+          timeLine['postTitle'].value = task.title;
+          timeLine['post'].value = task.description;
 
           editStatus = true
 
           id = doc.id
 
-          timeLine['btnPublicar'].innerText = 'Actualizar'
+          timeLine['btnPublicar'].innerText = 'Actualizar';
 
           // timeLine.reset();
 
-          })
+          });
           // console.log(doc.data()) (no figura en consola lo esperado)
-        })
-      })
+        });
+      });
       
 
     // console.log(querySnapshot)
-  })
+  });
 
     const timeLine = document.getElementById('time-Line');
 
@@ -156,14 +159,19 @@ const viewHome = {
       const description = timeLine.post;
       
       if(!editStatus){
-        saveTask(title.value, description.value);
+        const idUser = JSON.parse(sessionStorage.getItem('USER'));
+
+        saveTask(title.value, description.value,idUser );
       }else{
         updateTask(id,{
-          title:title.value,
-          description:description.value,
+          
+          title: title.value,
+          description: description.value,
+          
         });
+        
         editStatus = false;
-        timeLine['btnPublicar'].innerText = 'Publicar'
+        timeLine['btnPublicar'].innerText = 'Publicar';
 
       }
 

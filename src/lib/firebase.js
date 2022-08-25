@@ -38,7 +38,8 @@ export const createUserWithEmailPassword = (email,password) => createUserWithEma
 
 export const signInWithEmailPassword = (email, password) => signInWithEmailAndPassword(auth, email, password)
 
-export const saveTask = (title, description) => addDoc(collection(db, 'tasks'), { title, description});
+//para mostrar nombre de perfil en post
+export const saveTask = (title, description, idUser) => addDoc(collection(db, 'tasks'), { title, description, idUser});
 // console.log(title,description)
 
 export const getTasks = () => getDocs(collection(db, 'tasks'));
