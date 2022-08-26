@@ -1,7 +1,16 @@
 // Import the functions you need from the SDKs you need
 // tienen que ser los mismos números
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged  } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+// eslint-disable-next-line import/no-unresolved
+} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 
 import {
   getFirestore,
@@ -13,7 +22,8 @@ import {
   deleteDoc,
   getDoc,
   updateDoc,
-  doc
+  doc,
+// eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 // import { title } from "../view/home";
 // Your web app's Firebase configuration
@@ -34,30 +44,32 @@ export const auth = getAuth(app);
 
 const db = getFirestore();
 
-export const createUserWithEmailPassword = (email,password) => createUserWithEmailAndPassword(auth, email, password);
+// eslint-disable-next-line max-len
+export const createUserWithEmailPassword = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
-export const signInWithEmailPassword = (email, password) => signInWithEmailAndPassword(auth, email, password)
+// eslint-disable-next-line max-len
+export const signInWithEmailPassword = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-//para mostrar nombre de perfil en post
-export const saveTask = (title, description, idUser) => addDoc(collection(db, 'tasks'), { title, description, idUser});
+// para mostrar nombre de perfil en post
+export const saveTask = (title, description, idUser) => addDoc(collection(db, 'tasks'), { title, description, idUser });
 // console.log(title,description)
 
 export const getTasks = () => getDocs(collection(db, 'tasks'));
 // console.log(getDocs);
 
-export const onGetTask = (callback) => onSnapshot(collection(db, 'tasks'),callback)
+export const onGetTask = (callback) => onSnapshot(collection(db, 'tasks'), callback);
 
-export const deleteTask = id => deleteDoc(doc(db, 'tasks', id));
+export const deleteTask = (id) => deleteDoc(doc(db, 'tasks', id));
 
-export const getTask = id => getDoc(doc(db, 'tasks', id));
+export const getTask = (id) => getDoc(doc(db, 'tasks', id));
 
-export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id),newFields);
+export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id), newFields);
 
 // export const registerUser =()
 export const userCollection = (userId, name, photo, email) => setDoc(doc(db, 'user', userId), { name, photo, email });
 
 export const getUser = (userId) => getDoc(doc(db, 'user', userId)).then((documentUser) => documentUser.data());
-// getUser("3HnQc0Zp3mYiZjqxxkMXcWd8r2x2");
+// getUser("2wV5dHY52YQdTBTUuXDdT3Zl9o42").then((e) =>console.log(e.name));
 // console.log(getUser("3HnQc0Zp3mYiZjqxxkMXcWd8r2x2")
 // )
 
@@ -86,9 +98,4 @@ export const onAuthObserver = (callback, noCallback) => onAuthStateChanged(auth,
   }
 });
 
-export {
-  signInWithEmailAndPassword,
-  getFirestore,
-  GoogleAuthProvider,
-
-};
+export { signInWithEmailAndPassword, getFirestore, GoogleAuthProvider };

@@ -1,6 +1,6 @@
 // export default () => {
 
-import { saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask, userCollection, getUser, onAuthObserver } from '../lib/firebase.js';
+import {saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask, userCollection, getUser, onAuthObserver} from '../lib/firebase.js';
 
 let editStatus = false;
 let id = '';
@@ -46,20 +46,20 @@ const viewHome = {
 
     // Traer el nombre de usuario, (el observador)
     // function authCallBack(user) {
-      // currentUser = user; // Usuario actual
-      // console.log(currentUser);
-      // const userPerfil = document.querySelector('#currentName');
-      // userPerfil.innerHTML = currentUser.displayName;
+    // currentUser = user; // Usuario actual
+    // console.log(currentUser);
+    // const userPerfil = document.querySelector('#currentName');
+    // userPerfil.innerHTML = currentUser.displayName;
 
-      // const photoUser = document.querySelector('.photo-user');
-      // const photoUserPerfil = document.querySelector('.photo-user-perfil');
+    // const photoUser = document.querySelector('.photo-user');
+    // const photoUserPerfil = document.querySelector('.photo-user-perfil');
 
-      // photoUser.setAttribute('src', user.photoURL); // Cambia el contenido src x la foto
-      // photoUserPerfil.setAttribute('src', user.photoURL);
-      // if (user.photoURL == null) {
-      //   photoUser.setAttribute('src', '../img/photo-user.png'); // img x defecto
-      //   photoUserPerfil.setAttribute('src', '../img/photo-user.png'); // img x defecto
-      // }
+    // photoUser.setAttribute('src', user.photoURL); // Cambia el contenido src x la foto
+    // photoUserPerfil.setAttribute('src', user.photoURL);
+    // if (user.photoURL == null) {
+    //   photoUser.setAttribute('src', '../img/photo-user.png'); // img x defecto
+    //   photoUserPerfil.setAttribute('src', '../img/photo-user.png'); // img x defecto
+    // }
     // }
     // onAuthObserver(authCallBack);
 
@@ -67,88 +67,88 @@ const viewHome = {
 
     // console.log("h")
     // const querySnapshot = await getTasks();
-    onGetTask(async(querySnapshot) =>{
-      containerPost.innerHTML = '';
-    
-
-      querySnapshot.forEach(async (doc) => {
-        console.log(querySnapshot);
+    onGetTask(async (querySnapshot) => {
+      
+      querySnapshot.forEach(async(doc) => {
         const task = doc.data();
-        const usuario = await getUser(task.idUser);
         // console.log(doc)
-        
-        containerPost.innerHTML +=`
+        containerPost.innerHTML = '';
+     
+      const dataUser = await getUser(task.idUser)
+      console.log(dataUser);
+        containerPost.innerHTML += `
         <div id="containerComment">
-          <img src="../images/fotoPerfil.webp" alt="">
-          <div id ="NameUserPost">${usuario.name}</div>
-          
-          <p id="titleComment">${task.title}</p>
-          <p id="descripComment">${task.description}</p>
-          <button class ='btn-delete' data-id="${doc.id}">Eliminar</button>
-          <button class ='btn-edit' data-id="${doc.id}">Editar</button>
-          <button class ='btn-like' data-id="${doc.id}">Like</button>
-
+          <div id="photoNameUser">
+            <img src="../images/fotoPerfil.webp" alt="">
+            <div id ="NameUserPost">${dataUser.name}</div>
+          </div>
+            <p id="titleComment">${task.title}</p>
+            <p id="descripComment">${task.description}</p>
+            <button id="deleteBtn" class ='btn-delete' data-id="${doc.id}"><img src="../images/icono_eliminar.png" alt="">
+            </button>
+            <button class ='btn-edit' data-id="${doc.id}">Editar</button>
+            <button class ='btn-like' data-id="${doc.id}">Like</button>
         </div>
-        `
+        `;
         // console.log(doc.data())
+        // btnsDelete.addEventListener('click', (e) => {
+        //   console.log(e.target.dataset.id);
+
+        // // deleteTask(dataset.id);
+        //   // console.log(dataset.id)
+        //   console.log('hola')
+        // });
+      
         // console.log(containerPost)
       });
 
-      let likes = {}
+      const btnsDelete = containerPost.querySelectorAll('.btn-delete');
+      console.log(btnsDelete)
+
+
+      const likes = {};
       const btnsLike = containerPost.querySelectorAll('.btn-like');
       btnsLike.forEach((btn) => {
-        btn.addEventListener('click',({target:{dataset}}) => {
+        btn.addEventListener('click', ({ target: { dataset } }) => {
           likes[dataset.id] = [currentUser.id];
 
           console.log(likes);
         });
       });
 
-      const btnsDelete = containerPost.querySelectorAll('.btn-delete');
-      // console.log(btnDelete)
-
-      btnsDelete.forEach(btn => {
-        btn.addEventListener('click',({target:{dataset}})=>{
-          deleteTask(dataset.id);
-          // console.log(dataset.id)
-          // console.log('hola')
-        })
-      })
+      
 
       // const btnProfile = btnProfile.querySelector('#btnProfile');
       // btnProfile.addEventListener('click',()=>{
       //   console.log("hola")
       // })
-      
 
       const btnsEdit = containerPost.querySelectorAll('.btn-edit');
-      btnsEdit.forEach(btn=>{
-        btn.addEventListener('click', e =>{
-          console.log(e.target.dataset.id)
+      btnsEdit.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          console.log(e.target.dataset.id);
           // console.log(e)
-          getTask (e.target.dataset.id).then(doc=>{
+          getTask(e.target.dataset.id).then((doc) => {
             // console.log(doc.data())
-          const task = doc.data()
+            const task = doc.data();
 
-          timeLine['postTitle'].value = task.title;
-          timeLine['post'].value = task.description;
+            timeLine.postTitle.value = task.title;
+            timeLine.post.value = task.description;
 
-          editStatus = true
+            editStatus = true;
 
-          id = doc.id
+            id = doc.id;
 
-          timeLine['btnPublicar'].innerText = 'Actualizar';
+            timeLine.btnPublicar.innerText = 'Actualizar';
 
-          // timeLine.reset();
-
+            // timeLine.reset();
           });
           // console.log(doc.data()) (no figura en consola lo esperado)
         });
       });
-      
 
     // console.log(querySnapshot)
-  });
+    });
 
     const timeLine = document.getElementById('time-Line');
 
@@ -157,28 +157,25 @@ const viewHome = {
 
       const title = timeLine.postTitle;
       const description = timeLine.post;
-      
-      if(!editStatus){
+
+      if (!editStatus) {
         const idUser = JSON.parse(sessionStorage.getItem('USER'));
 
-        saveTask(title.value, description.value,idUser );
-      }else{
-        updateTask(id,{
-          
+        saveTask(title.value, description.value, idUser);
+      } else {
+        updateTask(id, {
+
           title: title.value,
           description: description.value,
-          
-        });
-        
-        editStatus = false;
-        timeLine['btnPublicar'].innerText = 'Publicar';
 
+        });
+
+        editStatus = false;
+        timeLine.btnPublicar.innerText = 'Publicar';
       }
 
       timeLine.reset();
     });
-
-    
 
     // console.log(timeLine)
   },

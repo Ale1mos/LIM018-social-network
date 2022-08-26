@@ -32,7 +32,7 @@ export default () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const userName = document.getElementById('userName').value;
-    console.log(email, password, userName);
+    // console.log(email, password, userName);
     createUserWithEmailPassword(email, password)
       .then((userCredential) => {
         console.log(userCredential.user.uid);

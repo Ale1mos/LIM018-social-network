@@ -11,6 +11,7 @@ export default () => {
       <li><a href="#/home">Inicio</a></li>
       <li><a id="btnProfile" href="#/user">Perfil</a></li>
       <li><a href="#/out">Salir</a></li>
+
     </ul>
   </div>
 
@@ -24,7 +25,7 @@ export default () => {
 
   const divElement = document.createElement('div');
   divElement.innerHTML = viewUser;
-    promiseGetUser(divElement);
+  promiseGetUser(divElement);
   // const userProfile = divElement.querySelector('#userProfile');
   // console.log(userProfile.textContent);
   // getUser(idUser).then((e)=>console.log(e))
@@ -35,7 +36,6 @@ async function promiseGetUser(viewUser) {
   const userProfile = viewUser.querySelector('#userProfile');
   const userPhoto = viewUser.querySelector('#userPhoto');
   const userEmail = viewUser.querySelector('#userEmail');
-
 
   const idUser = JSON.parse(sessionStorage.getItem('USER'));
   console.log(idUser);
