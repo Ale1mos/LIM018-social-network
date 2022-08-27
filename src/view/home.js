@@ -19,6 +19,7 @@ const viewHome = {
         </nav>
       </section>
       
+      
       <body class="muro">
         <form id="time-Line">
           <div id="containerTitlePost">
@@ -31,14 +32,15 @@ const viewHome = {
           </div>
         </form>
     
-        <div id="containerHome"></div>
+        <div id="containerPost"></div>
     
       </body>`;
-
     const divElement = document.createElement('div');
     divElement.innerHTML = homeTemplate;
+    
 
     return divElement;
+    
   },
 
   init: () => {
@@ -63,12 +65,13 @@ const viewHome = {
     // }
     // onAuthObserver(authCallBack);
 
-    const containerPost = document.getElementById('containerHome');
+    const containerPost = document.getElementById('containerPost');
 
     // console.log("h")
     // const querySnapshot = await getTasks();
-    onGetTask(async (querySnapshot) => {
-      
+    onGetTask((querySnapshot) => {
+      console.log(querySnapshot)
+
       querySnapshot.forEach(async(doc) => {
         const task = doc.data();
         // console.log(doc)
@@ -90,42 +93,26 @@ const viewHome = {
             <button class ='btn-like' data-id="${doc.id}">Like</button>
         </div>
         `;
+        const btnsDelete = containerPost.querySelectorAll('.btn-delete');
+      // console.log(btnsDelete)
         // console.log(doc.data())
-        // btnsDelete.addEventListener('click', (e) => {
-        //   console.log(e.target.dataset.id);
+        btnsDelete.forEach((button) =>{
+          button.addEventListener('click', (e) => {
+            // console.log(e.currentTarget.dataset.id);
+  
+          deleteTask(e.currentTarget.dataset.id);
+            // console.log(dataset.id)
+            // console.log('hola')
+          });
+        })
+        const btnsEdit = containerPost.querySelectorAll('.btn-edit');
 
-        // // deleteTask(dataset.id);
-        //   // console.log(dataset.id)
-        //   console.log('hola')
-        // });
-      
-        // console.log(containerPost)
-      });
-
-      const btnsDelete = containerPost.querySelectorAll('.btn-delete');
-      console.log(btnsDelete)
-
-
-      const likes = {};
-      const btnsLike = containerPost.querySelectorAll('.btn-like');
-      btnsLike.forEach((btn) => {
-        btn.addEventListener('click', ({ target: { dataset } }) => {
-          likes[dataset.id] = [currentUser.id];
-
-          console.log(likes);
-        });
-      });
-
-      
-
-      // const btnProfile = btnProfile.querySelector('#btnProfile');
-      // btnProfile.addEventListener('click',()=>{
-      //   console.log("hola")
-      // })
-
-      const btnsEdit = containerPost.querySelectorAll('.btn-edit');
       btnsEdit.forEach((btn) => {
+        // console.log(btnsEdit)
+        // console.log(btn)
         btn.addEventListener('click', (e) => {
+        //  console.log(e)
+
           console.log(e.target.dataset.id);
           // console.log(e)
           getTask(e.target.dataset.id).then((doc) => {
@@ -146,6 +133,33 @@ const viewHome = {
           // console.log(doc.data()) (no figura en consola lo esperado)
         });
       });
+      
+        // console.log(containerPost)
+      });
+
+
+
+      
+
+
+      const likes = {};
+      const btnsLike = containerPost.querySelectorAll('.btn-like');
+      btnsLike.forEach((btn) => {
+        btn.addEventListener('click', ({ target: { dataset } }) => {
+          likes[dataset.id] = [currentUser.id];
+
+          console.log(likes);
+        });
+      });
+
+      
+
+      // const btnProfile = btnProfile.querySelector('#btnProfile');
+      // btnProfile.addEventListener('click',()=>{
+      //   console.log("hola")
+      // })
+
+      
 
     // console.log(querySnapshot)
     });
