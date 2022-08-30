@@ -1,11 +1,11 @@
 // export default () => {
 
-import { saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask, userCollection, onAuthObserver } from '../lib/firebase.js';
+import { saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask, userCollection, onAuthObserver , newLikes} from '../lib/firebase.js';
 
 let editStatus = false;
 let id = '';
 const viewHome = {
-  template: () => {
+  template: () => { 
     const homeTemplate = `
   
       <section class="">
@@ -63,6 +63,8 @@ const viewHome = {
     }
     onAuthObserver(authCallBack);
 
+    
+
     const containerPost = document.getElementById('containerHome');
 
     // console.log("h")
@@ -82,13 +84,54 @@ const viewHome = {
           <p id="descripComment">${task.description}</p>
           <button class ='btn-delete' data-id="${doc.id}">Eliminar</button>
           <button class ='btn-edit' data-id="${doc.id}">Editar</button>
+          <button class ='btn-like' data-id="${doc.id}">Like</button>
 
         </div>
         `
         // console.log(doc.data())
         // console.log(containerPost)
       });
-      containerPost.innerHTML= html
+      containerPost.innerHTML = html;
+
+      async function likesCount(e) {
+        const btnlike = e.target;
+        const userLike = sessionStorageCall().id;
+        const postLike = btnlike.getAttribute('name');
+        const postData = await getUserById( postLike, 'tasks');
+        
+        if (await postData.likes.includes(userLike)){
+          await newLikes(
+            postLike, 
+            await postData.likes.filter((item)=> item !== userLike),
+            );
+          }else {
+
+            await newLikes(postLike, [...postData.likes, userLike]);
+            
+          }
+        }
+      });
+
+      const btnsLike = document.querySelectorAll('.btn-like');
+
+      console.log(btnsLike)
+
+      btnsLike.forEach((likeIcon) => {
+
+      likeIcon.addEventListener('click',likesCount);
+
+      });
+
+    
+      // let likes = {}
+      // const btnsLike = containerPost.querySelectorAll('.btn-like');
+      // btnsLike.forEach((btn) => {
+      //   btn.addEventListener('click',({target:{dataset}}) => {
+      //     likes[dataset.id] = [currentUser.id];
+
+      //     console.log(likes);
+      //   });
+      // });
 
       const btnsDelete = containerPost.querySelectorAll('.btn-delete');
       // console.log(btnDelete)
@@ -134,7 +177,7 @@ const viewHome = {
       
 
     // console.log(querySnapshot)
-  })
+  
 
     const timeLine = document.getElementById('time-Line');
 
@@ -158,17 +201,13 @@ const viewHome = {
 
       timeLine.reset();
     });
-
     
-    function createDivs 
-
-
-
     
 
     // console.log(timeLine)
   },
 };
+
 
 export default viewHome;
 // export {title}

@@ -3,7 +3,7 @@
 // import { createUserWithEmailAndPassword, auth } from '../lib/firebase.js';
 import { createUserWithEmailPassword, userCollection } from '../lib/firebase.js';
 
-//import { changeview } from '../view-controller/index-controller.js';
+// import { changeview } from '../view-controller/index-controller.js';
 
 export default () => {
   const viewRegister = `
@@ -32,29 +32,31 @@ export default () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const userName = document.getElementById('userName').value;
-    console.log(email, password);
+    console.log(email, password, userName);
     createUserWithEmailPassword(email, password)
       .then((userCredential) => {
-        console.log(userCredential.user.uid)
+        console.log(userCredential.user.uid);
         const userId = userCredential.user.uid;
-        userCollection(userId, userName, "../images/fotoPerfil.webp")
+        console.log(userId);
+        userCollection(userId, userName, '../images/fotoPerfil.webp', email);
 
-        window.location.href = '#/login'; })
+        window.location.href = '#/login';
+      });
     // .catch(function(error){console.log("hola",error)})
-      // .catch((error) => {
-      //   const errorM = error.message;
-      //   errorMessage.setAttribute('class', 'errorMe');
-      //   switch (errorM) {
-      //     case 'Firebase: Error(auth/invalid-email).': {
-      //       errorMessage.textContent = 'Ingrese un correo electrónico válido';
-      //       break;
-      //     }
-      //     case 'Firebase: Error(auth/wrong-password).': {
-      //       errorMessage.textContent = 'Ingrese una clave válida';
-      //       break;
-      //     }
-      //   }
-      // });
+    // .catch((error) => {
+    //   const errorM = error.message;
+    //   errorMessage.setAttribute('class', 'errorMe');
+    //   switch (errorM) {
+    //     case 'Firebase: Error(auth/invalid-email).': {
+    //       errorMessage.textContent = 'Ingrese un correo electrónico válido';
+    //       break;
+    //     }
+    //     case 'Firebase: Error(auth/wrong-password).': {
+    //       errorMessage.textContent = 'Ingrese una clave válida';
+    //       break;
+    //     }
+    //   }
+    // });
   });
   return divElement;
 };

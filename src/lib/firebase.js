@@ -1,9 +1,8 @@
 // Import the functions you need from the SDKs you need
 // tienen que ser los mismos números
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
-// import {getFirestore} from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js';
-// import { } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-firestore.js"
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged  } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+
 import {
   getFirestore,
   setDoc,
@@ -35,9 +34,11 @@ export const auth = getAuth(app);
 
 const db = getFirestore();
 
+export const createUserWithEmailPassword = (email,password) => createUserWithEmailAndPassword(auth, email, password);
+
 export const signInWithEmailPassword = (email, password) => signInWithEmailAndPassword(auth, email, password)
 
-export const saveTask = (title, description) => addDoc(collection(db, 'tasks'), { title, description});
+export const saveTask = (title, description) => addDoc(collection(db, 'tasks'), { title, description, likes : []});
 // console.log(title,description)
 
 export const getTasks = () => getDocs(collection(db, 'tasks'));
@@ -51,14 +52,23 @@ export const getTask = id => getDoc(doc(db, 'tasks', id));
 
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id),newFields);
 
-export const createUserWithEmailPassword = (email,password) => createUserWithEmailAndPassword(auth, email, password);
 // export const registerUser =()
-export const userCollection = (userId, name, photo) => setDoc(doc(db, 'user', userId), {name, photo});
+export const userCollection = (userId, name, photo, email) => setDoc(doc(db, 'user', userId), { name, photo, email });
 
-export const getUser = (userId) => getDoc(doc(db, 'user', userId)).then((documentUser)=> documentUser.data());
+export const getUser = (userId) => getDoc(doc(db, 'user', userId)).then((documentUser) => documentUser.data());
 // getUser("3HnQc0Zp3mYiZjqxxkMXcWd8r2x2");
 // console.log(getUser("3HnQc0Zp3mYiZjqxxkMXcWd8r2x2")
 // )
+
+// export const singGoogle = () => {
+//   const provider = new GoogleAuthProvider();
+//   return signInWithPopup(auth, provider)
+// }
+
+const provider = new GoogleAuthProvider();
+export const singGoogle = () => signInWithPopup(auth, provider);
+
+export const disconnect = () => signOut(auth);
 
 export const onAuthObserver = (callback, noCallback) => onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -75,7 +85,15 @@ export const onAuthObserver = (callback, noCallback) => onAuthStateChanged(auth,
   }
 });
 
+export const newLikes = async (id, arraylikes ) =>{
+  await updateDoc(doc(db,'tasks', id),{
+    likes : arraylikes,
+  })
+}
+
 export {
   signInWithEmailAndPassword,
   getFirestore,
+  GoogleAuthProvider,
+
 };

@@ -1,6 +1,7 @@
 // import { signInWithEmailAndPassword, auth } from '../lib/firebase.js';
-import { changeview } from '../view-controller/index-controller.js';
-import { signInWithEmailPassword } from '../lib/firebase.js';
+// import { changeview } from '../view-controller/index-controller.js';
+import { signInWithEmailPassword, singGoogle, userCollection, disconnect, GoogleAuthProvider } from '../lib/firebase.js';
+// import { async } from 'regenerator-runtime';
 
 export default () => {
   const viewLogin = `
@@ -17,7 +18,7 @@ export default () => {
     <br><br>
 
     <button id="login" value="iniciar" class="btns">Iniciar Sesión</button>
-    <img id="google" src="./images/logoGoogle.png" alt="">
+    <img id="btnGoogle" src="./images/logoGoogle.png" alt="">
     <br><br>
     
     <button value="registrarse" id="register" class="btns"><a href="#/register">Registrarse</a></button>
@@ -28,7 +29,59 @@ export default () => {
 
   const divElement = document.createElement('div');
   divElement.innerHTML = viewLogin;
-  const google = document.querySelector('#google');
+
+
+  //LOGEARSE CON GOOGLE
+
+  // const singInGoogle = () => {
+  //     divElement.querySelector('#btnGoogle').addEventListener('click',(e) => {
+  //       e.preventDefault();
+  //       singGoogle()
+        // .then(o) => {
+          // console.log("funciona")
+          // const credential = GoogleAuthProvider.credentialFromResult(result);
+          // const token = credential.accessToken;
+          // const user = result.user;
+          // userCollection(user.uid, user.displayName, user.email);
+          // window.location.hash = '#/home';
+        // }
+
+  // })
+  // }
+  divElement.querySelector('#btnGoogle').addEventListener('click',(e) => {
+    e.preventDefault();
+
+    singGoogle()
+      .then((result)=>{
+        // disconnect();
+        sessionStorage.clear();
+        // console.log(result)
+        GoogleAuthProvider.credentialFromResult(result);
+
+        const user = result.user;
+        console.log(user)
+        const nameGloogle = user.displayName;
+                console.log(nameGloogle)
+        const emailGoogle = user.email;
+                console.log(emailGoogle)
+        const idUserRegister = user.uid;
+                console.log(idUserRegister)
+        const photoGoogle = user.photoURL;
+        console.log(photoGoogle)
+
+        // CREAR Y ALMACENAR USUARIO
+        userCollection(idUserRegister, nameGloogle, photoGoogle, emailGoogle);
+        sessionStorage.setItem('USER', JSON.stringify(idUserRegister));
+
+                
+        window.location.href = '#/home';
+
+      });
+
+  });
+
+
+  //LOGEARSE CON CORREO
 
   divElement.querySelector('#login').addEventListener('click', () => {
     // google.style.display = 'none';
@@ -37,6 +90,7 @@ export default () => {
     console.log(email, password);
     signInWithEmailPassword(email, password)
       .then((objectUser) => {
+        console.log(objectUser)
         console.log(objectUser.user.uid);
         const uidUser = objectUser.user.uid;
         sessionStorage.setItem('USER', JSON.stringify(uidUser));
