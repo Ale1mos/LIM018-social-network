@@ -90,7 +90,7 @@ export default () => {
     console.log(email, password);
     signInWithEmailPassword(email, password)
       .then((objectUser) => {
-        console.log(objectUser)
+        console.log('objectUser', objectUser)
         console.log(objectUser.user.uid);
         const uidUser = objectUser.user.uid;
         sessionStorage.setItem('USER', JSON.stringify(uidUser));
