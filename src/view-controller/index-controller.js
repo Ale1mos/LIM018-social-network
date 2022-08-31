@@ -14,11 +14,9 @@ const changeview = (route) => {
     case '#/register':
     { return container.appendChild(componentes.register()); }
     case '#/home':
-      container.appendChild(componentes.home.template()); console.log("hola"); componentes.home.init();
+      container.appendChild(componentes.home.template()); componentes.home.init();
     case '#/user':
     { return container.appendChild(componentes.user()); }
-    case '#/out':
-    { return container.appendChild(componentes.login()); }
 
     default:
       break;

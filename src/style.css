@@ -79,6 +79,15 @@
   text-decoration: none;
 }
 
+#barra a:hover{
+  margin: 15px;
+  /* list-style-type: none;
+  appearance: none; */
+  list-style: none;
+  text-decoration: none;
+  color: #d2bc2d;
+}
+
 #containerBarra{
   border: solid red;
 }
@@ -134,12 +143,11 @@ body{
   /* align-items:center ; */
 }
 
-#containerComment img{
+#iconPhoto{
   width: 13%;
   margin: 12px;
   border-radius: 60%;
   box-shadow: 4px 0px 15px;
-
 }
 
 #titleComment, #descripComment{
@@ -184,7 +192,8 @@ body{
   border: solid #d2bc2d;
   border-radius: 4px;
   box-shadow: 4px 0px 15px;
-
+  width: 30%;
+  /* font-weight: 500; */
   /* -webkit-transition-duration: 0.4s; 
   transition-duration: 0.4s; */
 }
@@ -192,6 +201,7 @@ body{
 #containerbtnPost button:hover {
   background-color: #d2bc2d; 
   color: white;
+  cursor: pointer;
 }
 
 section{
@@ -199,6 +209,43 @@ section{
   flex-direction: column;
   justify-content: center;
   /* align-items: center; */
+}
+
+#btnComment{
+  display: flex;
+}
+
+.btn-like,
+.btn-edit,
+.btn-delete{
+  width: 50%;
+  margin: 5px;
+  background-color: #a1e7e7;
+  border-radius: 7%;
+  border: #a1e7e7;
+  box-shadow: 4px 0px 15px;
+  cursor: pointer;
+
+}
+
+.btn-like:hover,
+.btn-edit:hover,
+.btn-delete:hover{
+  width: 50%;
+  margin: 5px;
+  background-color: #bbf0f0;
+  border-radius: 7%;
+  border: #bbf0f0;
+  box-shadow: 4px 0px 15px;
+  cursor: pointer;
+  
+}
+
+#btnIcon{
+  width: 23%;
+  /* margin: 12px; */
+  /* border-radius: 8%; */
+  /* box-shadow: 4px 0px 15px; */
 }
 
 
