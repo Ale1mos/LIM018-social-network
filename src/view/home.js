@@ -21,7 +21,6 @@ const viewHome = {
           </nav>
         </section>
         
-        
         <body class="muro">
           <form id="time-Line">
             <div id="containerTitlePost">
@@ -30,7 +29,6 @@ const viewHome = {
             </div>
             <div id="containerbtnPost">
               <button id="btnPublicar">Publicar</button><br>
-              <button id="btnCancelar">Cancelar</button>
             </div>
           </form>
       
@@ -82,15 +80,15 @@ const viewHome = {
         containerPost.innerHTML += `
           <div id="containerComment">
             <div id="photoNameUser">
-              <img id="iconPhoto" src="../images/fotoPerfil.webp" alt="">
+              <img id="iconPhotoProfile" src="../images/fotoPerfil.webp" alt="">
               <div id ="NameUserPost">${dataUser.name}</div>
             </div>
               <p id="titleComment">${task.title}</p>
               <p id="descripComment">${task.description}</p>
               <div id="btnComment">
-                <button id="deleteBtn" class ='btn-delete' data-id="${doc.id}"><img id="btnIcon"src="../images/icono_eliminar.png" alt="">
+                <button id="deleteBtn" class ='btn-delete' data-id="${doc.id}"><img id="iconDelete" src="../images/icono_eliminar.png" alt="">
                 </button>
-                <button class ='btn-edit' data-id="${doc.id}">Editar</button>
+                <button class ='btn-edit' data-id="${doc.id}"><img id="iconDelete" src="../images/icono_editar_4.png" alt=""></button>
                 <button class ='btn-like' data-id="${doc.id}">Like</button>
               </div>
           </div>
@@ -169,7 +167,7 @@ const viewHome = {
         const idUser = JSON.parse(sessionStorage.getItem('USER'));
 
         saveTask(title.value, description.value, idUser);
-      } else {
+      } if (editStatus) {
         updateTask(id, {
 
           title: title.value,
@@ -183,6 +181,17 @@ const viewHome = {
 
       timeLine.reset();
     });
+
+    // const btnCancelar = document.getElementById("btn-Cancelar")
+    // const postCancel = document.getElementById("post")
+    // const postTitleCancel=document.getElementById("postTitle")
+
+    // btnCancelar.addEventListener("click", (e)=>{
+
+    //   postCancel.value = " "
+    //   postTitleCancel.value =" "
+
+    // })
 
     // console.log(timeLine)
   },
