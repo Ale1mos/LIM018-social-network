@@ -10,11 +10,9 @@ export default () => {
       <img id="logoPeruvianHome" src="./images/depositphotos_59216213-stock-illustration-peruvian-food-illustration.jpg" alt="hola">
       <li><a href="#/home">Inicio</a></li>
       <li><a id="btnProfile" href="#/user">Perfil</a></li>
-      <li><a href="#/out">Salir</a></li>
-
+      <li><a href="">Salir</a></li>
     </ul>
   </div>
-
   <div id = "containerProfile">
     <img id="userPhoto" src="">
     <h2 id="userProfile"></h2>
@@ -45,4 +43,4 @@ async function promiseGetUser(viewUser) {
   userPhoto.src = usuario.photo;
   userEmail.textContent = usuario.email;
   // console.log(usuario);
-}
+};

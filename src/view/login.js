@@ -6,23 +6,16 @@ import { signInWithEmailPassword, singGoogle, userCollection, disconnect, Google
 export default () => {
   const viewLogin = `
   <section class="login">
-
-  
+  <h3 id="nameApp">PERUVIAN TASTE</h3>
   <div id="form">
-    <h3 id="nameApp">PERUVIAN TASTE</h3>
-
-    <input type="text" id="email" class = "inputData" placeholder="Correo">
+    <input type="text" id="email" placeholder="Correo">
     <br><br>
-    <input type="password" id="password" class = "inputData" placeholder="Contraseña">
-
+    <input type="password" id="password" placeholder="Contraseña">
     <br><br>
-
-    <button id="login" value="iniciar" class="btns">Iniciar Sesión</button>
-    <img id="btnGoogle" src="./images/logoGoogle.png" alt="">
-    <br><br>
-    
+      <button id="login" value="iniciar" class="btns">Iniciar Sesión</button>
+      <h3>---- O ----</h3>
+      <img id="btnGoogle" src="./images/logoGoogle.png" alt="">
     <button value="registrarse" id="register" class="btns"><a href="#/register">Registrarse</a></button>
-    
   </div>
   </section>
   `;

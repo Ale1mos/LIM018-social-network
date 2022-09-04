@@ -1,45 +1,44 @@
 // export default () => {
 
-  import {saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask, userCollection, getUser, onAuthObserver} from '../lib/firebase.js';
-
+  import {
+    saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask, userCollection, getUser, onAuthObserver,
+  } from '../lib/firebase.js';
+  
   let editStatus = false;
   let id = '';
   const viewHome = {
     template: () => {
       const homeTemplate = `
-    
-        <section class="">
-          <nav>
-            <ul id="barra">
-            <img id="logoPeruvianHome" src="./images/depositphotos_59216213-stock-illustration-peruvian-food-illustration.jpg" alt="hola">
-              <li><a href="#/home">Inicio</a></li>
-              <li><a id="btnProfile" href="#/user">Perfil</a></li>
-              <li><a href="#/out">Salir</a></li>
-            </ul>
-          </nav>
-        </section>
-        
-        
-        <body class="muro">
-          <form id="time-Line">
-            <div id="containerTitlePost">
-              <input type="text" id = "postTitle" placeholder="Título">
-              <textarea id="post" placeholder="Escribe aquí"></textarea><br>
-            </div>
-            <div id="containerbtnPost">
-              <button id="btnPublicar">Publicar</button><br>
-            </div>
-          </form>
       
-          <div id="containerPost"></div>
-      
-        </body>`;
+          <section class="">
+            <nav>
+              <ul id="barra">
+              <img id="logoPeruvianHome" src="./images/depositphotos_59216213-stock-illustration-peruvian-food-illustration.jpg" alt="hola">
+                <li><a href="#/home">Inicio</a></li>
+                <li><a id="btnProfile" href="#/user">Perfil</a></li>
+                <li><a href="">Salir</a></li>
+              </ul>
+            </nav>
+          </section>
+          
+          <body class="muro">
+            <form id="time-Line">
+              <div id="containerTitlePost">
+                <input type="text" id = "postTitle" placeholder="Título">
+                <textarea id="post" placeholder="Escribe aquí"></textarea><br>
+              </div>
+              <div id="containerbtnPost">
+                <button id="btnPublicar">Publicar</button><br>
+              </div>
+            </form>
+        
+            <div id="containerPost"></div>
+        
+          </body>`;
       const divElement = document.createElement('div');
       divElement.innerHTML = homeTemplate;
-      
   
       return divElement;
-      
     },
   
     init: () => {
@@ -69,77 +68,74 @@
       // console.log("h")
       // const querySnapshot = await getTasks();
       onGetTask((querySnapshot) => {
-        console.log(querySnapshot)
+        console.log(querySnapshot);
   
-        querySnapshot.forEach(async(doc) => {
+        querySnapshot.forEach(async (doc) => {
           const task = doc.data();
           // console.log(doc)
           containerPost.innerHTML = '';
-       
-        const dataUser = await getUser(task.idUser)
-        console.log(dataUser);
+  
+          const dataUser = await getUser(task.idUser);
+          console.log(dataUser);
           containerPost.innerHTML += `
-          <div id="containerComment">
-            <div id="photoNameUser">
-              <img src="../images/fotoPerfil.webp" alt="">
-              <div id ="NameUserPost">${dataUser.name}</div>
+            <div id="containerComment">
+              <div id="photoNameUser">
+                <img id="iconPhotoProfile" src="../images/fotoPerfil.webp" alt="">
+                <div id ="NameUserPost">${dataUser.name}</div>
+              </div>
+                <p id="titleComment">${task.title}</p>
+                <p id="descripComment">${task.description}</p>
+                <div id="btnComment">
+                  <button id="deleteBtn" class ='btn-delete' data-id="${doc.id}"><img id="iconDelete" src="../images/icono_eliminar.png" alt="">
+                  </button>
+                  <button class ='btn-edit' data-id="${doc.id}"><img id="iconDelete" src="../images/icono_editar_4.png" alt=""></button>
+                  <button class ='btn-like' data-id="${doc.id}">Like</button>
+                </div>
             </div>
-              <p id="titleComment">${task.title}</p>
-              <p id="descripComment">${task.description}</p>
-              <button id="deleteBtn" class ='btn-delete' data-id="${doc.id}"><img src="../images/icono_eliminar.png" alt="">
-              </button>
-              <button class ='btn-edit' data-id="${doc.id}">Editar</button>
-              <button class ='btn-like' data-id="${doc.id}">Like</button>
-          </div>
-          `;
+            `;
           const btnsDelete = containerPost.querySelectorAll('.btn-delete');
-        // console.log(btnsDelete)
+          // console.log(btnsDelete)
           // console.log(doc.data())
-          btnsDelete.forEach((button) =>{
+          btnsDelete.forEach((button) => {
             button.addEventListener('click', (e) => {
               // console.log(e.currentTarget.dataset.id);
-    
-            deleteTask(e.currentTarget.dataset.id);
+  
+              deleteTask(e.currentTarget.dataset.id);
               // console.log(dataset.id)
               // console.log('hola')
             });
-          })
+          });
           const btnsEdit = containerPost.querySelectorAll('.btn-edit');
   
-        btnsEdit.forEach((btn) => {
-          // console.log(btnsEdit)
-          // console.log(btn)
-          btn.addEventListener('click', (e) => {
-          //  console.log(e)
+          btnsEdit.forEach((btn) => {
+            // console.log(btnsEdit)
+            // console.log(btn)
+            btn.addEventListener('click', (e) => {
+            //  console.log(e)
   
-            console.log(e.target.dataset.id);
-            // console.log(e)
-            getTask(e.target.dataset.id).then((doc) => {
-              // console.log(doc.data())
-              const task = doc.data();
+              console.log(e.target.dataset.id);
+              // console.log(e)
+              getTask(e.target.dataset.id).then((doc) => {
+                // console.log(doc.data())
+                const task = doc.data();
   
-              timeLine.postTitle.value = task.title;
-              timeLine.post.value = task.description;
+                timeLine.postTitle.value = task.title;
+                timeLine.post.value = task.description;
   
-              editStatus = true;
+                editStatus = true;
   
-              id = doc.id;
+                id = doc.id;
   
-              timeLine.btnPublicar.innerText = 'Actualizar';
+                timeLine.btnPublicar.innerText = 'Actualizar';
   
-              // timeLine.reset();
+                // timeLine.reset();
+              });
+              // console.log(doc.data()) (no figura en consola lo esperado)
             });
-            // console.log(doc.data()) (no figura en consola lo esperado)
           });
-        });
-        
+  
           // console.log(containerPost)
         });
-  
-  
-  
-        
-  
   
         const likes = {};
         const btnsLike = containerPost.querySelectorAll('.btn-like');
@@ -151,16 +147,12 @@
           });
         });
   
-        
-  
         // const btnProfile = btnProfile.querySelector('#btnProfile');
         // btnProfile.addEventListener('click',()=>{
         //   console.log("hola")
         // })
   
-        
-  
-      // console.log(querySnapshot)
+        // console.log(querySnapshot)
       });
   
       const timeLine = document.getElementById('time-Line');
@@ -175,7 +167,7 @@
           const idUser = JSON.parse(sessionStorage.getItem('USER'));
   
           saveTask(title.value, description.value, idUser);
-        } if (editStatus){
+        } if (editStatus) {
           updateTask(id, {
   
             title: title.value,
@@ -189,19 +181,17 @@
   
         timeLine.reset();
       });
-
+  
       // const btnCancelar = document.getElementById("btn-Cancelar")
       // const postCancel = document.getElementById("post")
       // const postTitleCancel=document.getElementById("postTitle")
-
+  
       // btnCancelar.addEventListener("click", (e)=>{
-
+  
       //   postCancel.value = " "
       //   postTitleCancel.value =" "
-
-
+  
       // })
-      
   
       // console.log(timeLine)
     },

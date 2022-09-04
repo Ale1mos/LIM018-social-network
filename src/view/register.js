@@ -8,13 +8,14 @@ import { createUserWithEmailPassword, userCollection } from '../lib/firebase.js'
 export default () => {
   const viewRegister = `
   <section class="login">
+  <h3 id="nameApp">PERUVIAN TASTE</h3>
   <div id="form">
-    <h3 id="nameApp">PERUVIAN TASTE</h3>
-    <input type="text" id="userName" class = "inputData" placeholder="Nombre">
+    
+    <input type="text" id="inputUserName" placeholder="Nombre">
     <br><br>
-    <input type="email" id="email" class = "inputData" placeholder="Correo">
+    <input type="email" id="inputEmail" class = "inputData" placeholder="Correo">
     <br><br>
-    <input type="password" id="password" class = "inputData" placeholder="Contraseña">
+    <input type="password" id="inputPassword" placeholder="Contraseña">
     <br><br>
     <div id ="errorM"></div>
     <br><br>
@@ -29,9 +30,9 @@ export default () => {
   divElement.innerHTML = viewRegister;
 
   divElement.querySelector('#btnRegister').addEventListener('click', () => {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const userName = document.getElementById('userName').value;
+    const email = document.getElementById('inputEmail').value;
+    const password = document.getElementById('inputPassword').value;
+    const userName = document.getElementById('inputUserName').value;
     // console.log(email, password, userName);
     createUserWithEmailPassword(email, password)
       .then((userCredential) => {
