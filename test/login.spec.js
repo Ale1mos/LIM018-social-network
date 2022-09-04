@@ -1,4 +1,5 @@
 // importamos la funcion que vamos a testear
+//import { async } from 'regenerator-runtime';
 import login from '../src/view/login';
 
 jest.mock('../src/lib/firebase.js');
@@ -15,7 +16,7 @@ function tick() {
   });
 }
 
-it("Deberia cambiar a la pagina home cuando ingrese correo", () => {
+it("Deberia cambiar a la pagina home cuando ingrese correo", async () => {
 
   const divElement = document.createElement('div');
   divElement.id = 'container'
@@ -31,7 +32,7 @@ it("Deberia cambiar a la pagina home cuando ingrese correo", () => {
 
   buttonLogin.click();
 
-  // await tick();
+  await tick();
   expect(window.location.hash).toBe('#/home');
 
 
@@ -46,7 +47,7 @@ it ('Deberia cambiar a la pagina home cuando ingrese correo de google', ()=>{
   const buttonLogin = document.querySelector('#btnGoogle');
 
   buttonLogin.click();
-  
+
 })
 
 
