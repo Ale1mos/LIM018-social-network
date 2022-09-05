@@ -1,5 +1,6 @@
 // importamos la funcion que vamos a testear
 // import { async } from 'regenerator-runtime';
+// import { async } from 'regenerator-runtime';
 import login from '../src/view/login.js';
 
 jest.mock('../src/lib/firebase.js');
@@ -33,7 +34,7 @@ it('Deberia cambiar a la pagina home cuando ingrese correo', async () => {
   expect(window.location.hash).toBe('#/home');
 });
 
-it('no deberia ingresar porque no esta Registrado', () => {
+it('no deberia ingresar porque no esta Registrado', async() => {
   const divElement = document.createElement('div');
   divElement.id = 'container';
   document.body.append(divElement);
@@ -48,13 +49,13 @@ it('no deberia ingresar porque no esta Registrado', () => {
   loginPasword.value = '';
 
   btnLogin.click();
-
-  expect(messageTextTest.textContent).toBe('Por favor ingresa tu email y password');
+  await tick();
+  expect(messageTextTest.textContent).toBe('Por favor llene los campos');
 });
 
-it('login es una funcion', () => {
-  expect(typeof login).toBe('function');
-});
+// it('login es una funcion', () => {
+//   expect(typeof login).toBe('function');
+// });
 
 // it('Deberia cambiar a la pagina home cuando ingrese correo de google', () => {
 //   const divElement = document.createElement('div');

@@ -62,7 +62,7 @@ export default () => {
     if (email.value !== '' && password.value !== '') {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
-      console.log(email, password);
+      // console.log(email, password);
       signInWithEmailPassword(email, password)
         .then((objectUser) => {
           // console.log('objectUser', objectUser);

@@ -307,7 +307,8 @@ section{
 }
 
 .messageText{
-  margin-top: 40px;
+  margin-top: 57px;
+  font-size: large;
 }
 
 @media only screen and (min-width:600px){
@@ -503,6 +504,8 @@ section{
 
 #inputUserName{
   margin-top: 70px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 #inputEmail{
@@ -515,6 +518,7 @@ section{
 
 #btnIniciar{
   margin-top: 25px ;
+  margin-bottom: 40px;
 
   /* top: 570px; */
 }
