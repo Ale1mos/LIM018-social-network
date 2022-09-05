@@ -10,7 +10,7 @@ export default () => {
   <section class="login">
   <h3 id="nameApp">PERUVIAN TASTE</h3>
   <div id="form">
-    
+    <div class="messageText"></div>
     <input type="text" id="inputUserName" placeholder="Nombre">
     <br><br>
     <input type="email" id="inputEmail" class = "inputData" placeholder="Correo">
@@ -30,34 +30,27 @@ export default () => {
   divElement.innerHTML = viewRegister;
 
   divElement.querySelector('#btnRegister').addEventListener('click', () => {
-    const email = document.getElementById('inputEmail').value;
-    const password = document.getElementById('inputPassword').value;
-    const userName = document.getElementById('inputUserName').value;
-    // console.log(email, password, userName);
-    createUserWithEmailPassword(email, password)
-      .then((userCredential) => {
-        console.log(userCredential.user.uid);
-        const userId = userCredential.user.uid;
-        console.log(userId);
-        userCollection(userId, userName, '../images/fotoPerfil.webp', email);
+    if (inputEmail.value !== '' && inputPassword.value !== '' && inputUserName.value !== '') {
+      const email = document.getElementById('inputEmail').value;
+      const password = document.getElementById('inputPassword').value;
+      const userName = document.getElementById('inputUserName').value;
+      const messageText = divElement.querySelector('.messageText');
 
-        window.location.href = '#/login';
-      });
-    // .catch(function(error){console.log("hola",error)})
-    // .catch((error) => {
-    //   const errorM = error.message;
-    //   errorMessage.setAttribute('class', 'errorMe');
-    //   switch (errorM) {
-    //     case 'Firebase: Error(auth/invalid-email).': {
-    //       errorMessage.textContent = 'Ingrese un correo electrónico válido';
-    //       break;
-    //     }
-    //     case 'Firebase: Error(auth/wrong-password).': {
-    //       errorMessage.textContent = 'Ingrese una clave válida';
-    //       break;
-    //     }
-    //   }
-    // });
+      // console.log(email, password, userName);
+      createUserWithEmailPassword(email, password)
+        .then((userCredential) => {
+          messageText.textContent = 'Tu usuario ha sido creado';
+          // console.log(userCredential.user.uid);
+          const userId = userCredential.user.uid;
+          // console.log(userId);
+          userCollection(userId, userName, '../images/fotoPerfil.webp', email);
+
+          window.location.href = '#/login';
+        });
+    } else {
+      const messageText = divElement.querySelector('.messageText');
+      messageText.textContent = 'Por favor llene los campos';
+    }
   });
   return divElement;
 };

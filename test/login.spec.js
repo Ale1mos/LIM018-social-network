@@ -1,6 +1,6 @@
 // importamos la funcion que vamos a testear
 // import { async } from 'regenerator-runtime';
-import login from '../src/view/login';
+import login from '../src/view/login.js';
 
 jest.mock('../src/lib/firebase.js');
 
@@ -33,13 +33,36 @@ it('Deberia cambiar a la pagina home cuando ingrese correo', async () => {
   expect(window.location.hash).toBe('#/home');
 });
 
-it('Deberia cambiar a la pagina home cuando ingrese correo de google', () => {
+it('no deberia ingresar porque no esta Registrado', () => {
   const divElement = document.createElement('div');
   divElement.id = 'container';
   document.body.append(divElement);
-  divElement.appendChild(login());
+  document.body.appendChild(login());
 
-  const buttonLogin = document.querySelector('#btnGoogle');
+  const btnLogin = document.querySelector('#login');
+  const loginEmail = document.querySelector('#password');
+  const loginPasword = document.querySelector('#email');
+  const messageTextTest = document.querySelector('.messageText');
 
-  buttonLogin.click();
+  loginEmail.value = '';
+  loginPasword.value = '';
+
+  btnLogin.click();
+
+  expect(messageTextTest.textContent).toBe('Por favor ingresa tu email y password');
 });
+
+it('login es una funcion', () => {
+  expect(typeof login).toBe('function');
+});
+
+// it('Deberia cambiar a la pagina home cuando ingrese correo de google', () => {
+//   const divElement = document.createElement('div');
+//   divElement.id = 'container';
+//   document.body.append(divElement);
+//   divElement.appendChild(login());
+
+//   const buttonLogin = document.querySelector('#btnGoogle');
+
+//   buttonLogin.click();
+// });
