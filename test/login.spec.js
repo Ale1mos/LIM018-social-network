@@ -19,7 +19,7 @@ function tick() {
 it('Deberia cambiar a la pagina home cuando ingrese correo', async () => {
   const divElement = document.createElement('div');
   divElement.id = 'container';
-  document.body.append(divElement);
+  document.body.replaceChildren(divElement);
   divElement.appendChild(login());
 
   const buttonLogin = document.querySelector('#login');
@@ -38,7 +38,7 @@ it('Deberia cambiar a la pagina home cuando ingrese correo', async () => {
 it('no deberia ingresar porque no esta Registrado', async() => {
   const divElement = document.createElement('div');
   divElement.id = 'container';
-  document.body.append(divElement);
+  document.body.replaceChildren(divElement);
   document.body.appendChild(login());
 
   const btnLogin = document.querySelector('#login');
@@ -54,18 +54,3 @@ it('no deberia ingresar porque no esta Registrado', async() => {
     expect(messageTextTest.textContent).toBe('Por favor llene los campos');
   });
 });
-
-// it('login es una funcion', () => {
-//   expect(typeof login).toBe('function');
-// });
-
-// it('Deberia cambiar a la pagina home cuando ingrese correo de google', () => {
-//   const divElement = document.createElement('div');
-//   divElement.id = 'container';
-//   document.body.append(divElement);
-//   divElement.appendChild(login());
-
-//   const buttonLogin = document.querySelector('#btnGoogle');
-
-//   buttonLogin.click();
-// });
