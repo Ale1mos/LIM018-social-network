@@ -2,6 +2,7 @@
 // import { async } from 'regenerator-runtime';
 // import { async } from 'regenerator-runtime';
 import login from '../src/view/login.js';
+const process = require('process');
 
 jest.mock('../src/lib/firebase.js');
 
@@ -49,8 +50,9 @@ it('no deberia ingresar porque no esta Registrado', async() => {
   loginPasword.value = '';
 
   btnLogin.click();
-  await tick();
-  expect(messageTextTest.textContent).toBe('Por favor llene los campos');
+  process.nextTick(() =>{
+    expect(messageTextTest.textContent).toBe('Por favor llene los campos');
+  });
 });
 
 // it('login es una funcion', () => {

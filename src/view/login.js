@@ -59,6 +59,7 @@ export default () => {
   // LOGEARSE CON CORREO
 
   divElement.querySelector('#login').addEventListener('click', () => {
+    console.log("holaprueba")
     if (email.value !== '' && password.value !== '') {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
