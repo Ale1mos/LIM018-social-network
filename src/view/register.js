@@ -40,7 +40,7 @@ export default () => {
       createUserWithEmailPassword(email, password)
         .then((userCredential) => {
           messageText.textContent = 'Tu usuario ha sido creado';
-          // console.log(userCredential.user.uid);
+          console.log(userCredential.user.uid);
           const userId = userCredential.user.uid;
           // console.log(userId);
           userCollection(userId, userName, '../images/fotoPerfil.webp', email);

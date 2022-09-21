@@ -8,7 +8,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  onAuthStateChanged,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 
@@ -17,7 +16,6 @@ import {
   setDoc,
   collection,
   addDoc,
-  getDocs,
   onSnapshot,
   deleteDoc,
   getDoc,
@@ -45,6 +43,7 @@ export const auth = getAuth(app);
 const db = getFirestore();
 
 // eslint-disable-next-line max-len
+// por qué solo hay dos parámetros si nosotras solicitamos tres en register?
 export const createUserWithEmailPassword = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
 // eslint-disable-next-line max-len
@@ -54,7 +53,7 @@ export const signInWithEmailPassword = (email, password) => signInWithEmailAndPa
 export const saveTask = (title, description, idUser) => addDoc(collection(db, 'tasks'), { title, description, idUser });
 // console.log(title,description)
 
-export const getTasks = () => getDocs(collection(db, 'tasks'));
+// export const getTasks = () => getDocs(collection(db, 'tasks'));
 // console.log(getDocs);
 
 export const onGetTask = (callback) => onSnapshot(collection(db, 'tasks'), callback);
@@ -82,20 +81,5 @@ const provider = new GoogleAuthProvider();
 export const singGoogle = () => signInWithPopup(auth, provider);
 
 export const disconnect = () => signOut(auth);
-
-export const onAuthObserver = (callback, noCallback) => onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    console.log(user);
-    const diplayName = user.displayName;
-    console.log(diplayName);
-
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
 
 export { signInWithEmailAndPassword, getFirestore, GoogleAuthProvider };

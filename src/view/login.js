@@ -1,7 +1,7 @@
 // import { signInWithEmailAndPassword, auth } from '../lib/firebase.js';
 // import { changeview } from '../view-controller/index-controller.js';
 import {
-  signInWithEmailPassword, singGoogle, userCollection, disconnect, GoogleAuthProvider,
+  signInWithEmailPassword, singGoogle, userCollection, GoogleAuthProvider,
 } from '../lib/firebase.js';
 // import { async } from 'regenerator-runtime';
 
@@ -35,6 +35,7 @@ export default () => {
         // disconnect();
         sessionStorage.clear();
         // console.log(result)
+        // de dónde sale el credentialFromResult'
         GoogleAuthProvider.credentialFromResult(result);
 
         const user = result.user;

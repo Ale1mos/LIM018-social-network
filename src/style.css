@@ -453,10 +453,16 @@ section{
 
 #email{
   margin-top: 70px;
+  background: rgba(217, 217, 217, 0.25);
+  border: 4px solid #FFFFFF;
+  border-radius: 20px;
 }
 
 #password{
   margin-top: 10px;
+  background: rgba(217, 217, 217, 0.25);
+  border: 4px solid #FFFFFF;
+  border-radius: 20px;
 }
 
 #login{
@@ -506,21 +512,28 @@ section{
   margin-top: 70px;
   margin-left: 50px;
   margin-right: 50px;
+  background: rgba(217, 217, 217, 0.25);
+  border: 4px solid #FFFFFF;
+  border-radius: 20px;
 }
 
 #inputEmail{
   margin-top: 10px;
+  background: rgba(217, 217, 217, 0.25);
+  border: 4px solid #FFFFFF;
+  border-radius: 20px;
 }
 
 #inputPassword{
   margin-top: 10px;
+  background: rgba(217, 217, 217, 0.25);
+  border: 4px solid #FFFFFF;
+  border-radius: 20px;
 }
 
 #btnIniciar{
   margin-top: 25px ;
   margin-bottom: 40px;
-
-  /* top: 570px; */
 }
 
 #btnRegister{

@@ -1,7 +1,7 @@
 // export default () => {
 
 import {
-  saveTask, getTasks, onGetTask, deleteTask, getTask, updateTask, userCollection, getUser, onAuthObserver,
+  saveTask, onGetTask, deleteTask, getTask, updateTask, getUser,
 } from '../lib/firebase.js';
 
 let editStatus = false;
@@ -44,25 +44,6 @@ const viewHome = {
   init: () => {
     let currentUser;
 
-    // Traer el nombre de usuario, (el observador)
-    // function authCallBack(user) {
-    // currentUser = user; // Usuario actual
-    // console.log(currentUser);
-    // const userPerfil = document.querySelector('#currentName');
-    // userPerfil.innerHTML = currentUser.displayName;
-
-    // const photoUser = document.querySelector('.photo-user');
-    // const photoUserPerfil = document.querySelector('.photo-user-perfil');
-
-    // photoUser.setAttribute('src', user.photoURL); // Cambia el contenido src x la foto
-    // photoUserPerfil.setAttribute('src', user.photoURL);
-    // if (user.photoURL == null) {
-    //   photoUser.setAttribute('src', '../img/photo-user.png'); // img x defecto
-    //   photoUserPerfil.setAttribute('src', '../img/photo-user.png'); // img x defecto
-    // }
-    // }
-    // onAuthObserver(authCallBack);
-
     const containerPost = document.getElementById('containerPost');
 
     // console.log("h")
@@ -72,7 +53,7 @@ const viewHome = {
 
       querySnapshot.forEach(async (doc) => {
         const task = doc.data();
-        // console.log(doc)
+        console.log(task)
         containerPost.innerHTML = '';
 
         const dataUser = await getUser(task.idUser);
