@@ -8,7 +8,7 @@ import {
 export default () => {
   const viewLogin = `
   
-  <section class="login">
+  <section class="containerLogin">
   <h3 id="nameApp">PERUVIAN TASTE</h3>
   <div id="form">
     <div class="messageText"></div>
@@ -19,7 +19,8 @@ export default () => {
       <button id="login" value="iniciar" class="btns">Iniciar Sesión</button>
       <h3>---- O ----</h3>
       <img id="btnGoogle" src="./images/logoGoogle.png" alt="">
-    <button value="registrarse" id="register" class="btns"><a href="#/register">Registrarse</a></button>
+    <button id="register" value="registrarse" class="btns"><a href="#/register">Registrarse</a>
+    </button>
   </div>
   </section>
   `;
@@ -39,7 +40,7 @@ export default () => {
         GoogleAuthProvider.credentialFromResult(result);
 
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         const nameGloogle = user.displayName;
         // console.log(nameGloogle)
         const emailGoogle = user.email;

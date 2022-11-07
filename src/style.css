@@ -278,17 +278,18 @@ section{
   margin-right: 40%;
 }
 
-#inputPassword{
+/* #inputPassword{
   margin-top:;
-}
+} */
 
 #userName{
   margin-top: 50px;
 }
 
-.login{
+.containerLogin{
   display: flex;
   align-items: center;
+  /* border: solid green; */
 }
 
 #form{
@@ -300,6 +301,7 @@ section{
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 430px;
 }
 
 #form h3{
@@ -313,31 +315,21 @@ section{
 
 @media only screen and (min-width:600px){
   /* LOGIN Y REGISTER */
-  .login{
+  .containerLogin{
     display: flex;
     flex-direction: row;
     /* align-items: center; */
   }
 
   #form{
-    /* margin-top:120px ;
-    margin-left: 74px;
-    width: 65%;
-    height: 630px;
-    background: rgba(214, 210, 210, 0.43); */
-    /* margin-top: 100px; */
     margin-bottom: 80px;
     margin-top: 80px;
-    /* margin-left: 70px; */
-    /* margin-right: 40px; */
     background: rgba(214, 210, 210, 0.43);
-    /* border: solid blue; */
     width: 32%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* height: 100%; */
   }
 
   #nameApp{
@@ -452,37 +444,40 @@ section{
 }
 
 #email{
-  margin-top: 70px;
+  margin-top: 50px;
   background: rgba(217, 217, 217, 0.25);
   border: 4px solid #FFFFFF;
   border-radius: 20px;
+  height: 27px;
+  width: 60%;
 }
 
 #password{
-  margin-top: 10px;
+  margin-top: 5px;
   background: rgba(217, 217, 217, 0.25);
   border: 4px solid #FFFFFF;
   border-radius: 20px;
+  /* height: 100px; */
+  width: 60%;
 }
 
 #login{
   margin-top: 35px ;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  width: 30%;
+  height: 25px;
 }
 
 #register{
   margin-bottom: 70px;
   margin-top: 25px;
-  /* margin: 25px; */
-
-
-  /* font-family: 'Kameron';
-  font-style: normal;
-  font-weight: 200;
-  font-size: 20px;
-  line-height: 38px;
-  text-align: center;
-
-  color: #403333;  */
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  height: 25px;
+  border-radius: 4px;
 }
 
 #btnGoogle{

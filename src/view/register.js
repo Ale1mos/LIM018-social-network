@@ -7,7 +7,7 @@ import { createUserWithEmailPassword, userCollection } from '../lib/firebase.js'
 
 export default () => {
   const viewRegister = `
-  <section class="login">
+  <section class="containerLogin">
   <h3 id="nameApp">PERUVIAN TASTE</h3>
   <div id="form">
     <div class="messageText"></div>
