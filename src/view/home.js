@@ -67,10 +67,10 @@ const viewHome = {
               <p id="titleComment">${task.title}</p>
               <p id="descripComment">${task.description}</p>
               <div id="btnComment">
-                <button id="deleteBtn" class ='btn-delete' data-id="${doc.id}"><img id="iconDelete" src="../images/icono_eliminar.png" alt="">
+                <button class ='btn-like' data-id="${doc.id}"><img id="iconDelete" src="../images/love.png" alt=""></button>
+                <button class ='btn-edit' data-id="${doc.id}"><img id="iconDelete" src="../images/editar.png" alt=""></button>
+                <button id="deleteBtn" class ='btn-delete' data-id="${doc.id}"><img id="iconDelete" src="../images/delete.png" alt="">
                 </button>
-                <button class ='btn-edit' data-id="${doc.id}"><img id="iconDelete" src="../images/icono_editar_4.png" alt=""></button>
-                <button class ='btn-like' data-id="${doc.id}">Like</button>
               </div>
           </div>
           `;
@@ -94,7 +94,7 @@ const viewHome = {
           btn.addEventListener('click', (e) => {
           //  console.log(e)
 
-            console.log(e.target.dataset.id);
+            // console.log(e.target.dataset.id);
             // console.log(e)
             getTask(e.target.dataset.id).then((doc) => {
               // console.log(doc.data())
