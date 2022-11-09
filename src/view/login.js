@@ -19,8 +19,7 @@ export default () => {
       <button id="login" value="iniciar" class="btns">Iniciar Sesión</button>
       <h3>---- O ----</h3>
       <img id="btnGoogle" src="./images/logoGoogle.png" alt="">
-    <button id="register" value="registrarse" class="btns"><a href="#/register">Registrarse</a>
-    </button>
+    <button id="register" value="registrarse" class="btns"><a href="#/register">Registrarse</a></button>
   </div>
   </section>
   `;
@@ -40,7 +39,7 @@ export default () => {
         GoogleAuthProvider.credentialFromResult(result);
 
         const user = result.user;
-        // console.log(user);
+        console.log(user);
         const nameGloogle = user.displayName;
         // console.log(nameGloogle)
         const emailGoogle = user.email;
