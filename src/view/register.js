@@ -12,15 +12,9 @@ export default () => {
   <div id="form">
     <div class="messageText"></div>
     <input type="text" id="inputUserName" placeholder="Nombre">
-    <br><br>
     <input type="email" id="inputEmail" class = "inputData" placeholder="Correo">
-    <br><br>
     <input type="password" id="inputPassword" placeholder="Contraseña">
-    <br><br>
-    <div id ="errorM"></div>
-    <br><br>
     <button type="button" id="btnRegister" class="btns">Registrarse</button>
-    <br><br>
     <button type="button" id="btnIniciar" class="btns"><a href="#/login">Iniciar sesión</a></button>
   </div>
   </section>

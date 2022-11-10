@@ -13,7 +13,6 @@ export default () => {
   <div id="form">
     <div class="messageText"></div>
     <input type="text" id="email" placeholder="Correo">
-    <br><br>
     <input type="password" id="password" placeholder="Contraseña">
     <br><br>
       <button id="login" value="iniciar" class="btns">Iniciar Sesión</button>

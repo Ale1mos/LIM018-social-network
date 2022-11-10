@@ -45,4 +45,4 @@ async function promiseGetUser(viewUser) {
   userPhoto.src = usuario.photo;
   userEmail.textContent = usuario.email;
   // console.log(usuario);
-};
+}

@@ -61,7 +61,7 @@ const viewHome = {
         containerPost.innerHTML += `
           <div id="containerComment">
             <div id="photoNameUser">
-              <img id="iconPhotoProfile" src="../images/fotoPerfil.webp" alt="">
+              <img id="iconPhotoProfile" src="../images/user.png" alt="">
               <div id ="NameUserPost">${dataUser.name}</div>
             </div>
               <p id="titleComment">${task.title}</p>
@@ -162,6 +162,8 @@ const viewHome = {
 
       timeLine.reset();
     });
+
+    
 
     // const btnCancelar = document.getElementById("btn-Cancelar")
     // const postCancel = document.getElementById("post")
