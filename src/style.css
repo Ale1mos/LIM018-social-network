@@ -28,6 +28,7 @@
 #photoNameUser{
   display: flex;
   background: white;
+  border-radius: 8px;
 }
 
 #btnComment{
@@ -39,15 +40,15 @@
 }
 
 #NameUserPost{
-  margin-top: 25px;
-  margin-left: 5px;
+  margin-top: 33px;
+  margin-left: 10px;
   font-size: 25px;
 }
 
 #iconPhotoProfile{
-  width: 12%;
+  width: 10%;
   border-radius: 100px;
-  margin: 10px;
+  margin: 17px;
   box-shadow: 4px 3px 14px 1px;
 }
 
@@ -62,7 +63,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(214, 210, 210, 0.43);
+  /* background: rgba(214, 210, 210, 0.43); */
   margin: 15%;
   height: 500px;
   width: 75%;
@@ -79,11 +80,12 @@
 
 #userProfile{
   margin: 6%;
+  font-size: xx-large;
   text-align: center;
 }
 
 #userEmail{
-  font-size: large;
+  font-size: x-large;
   margin: 2%;
   /* width: ; */
 }
@@ -116,6 +118,7 @@
 body{
   background-image: url("./images/cocina_peruana_varios.webp");
   background-size: cover;
+  background-attachment: fixed;
   /* background-repeat: no-repeat; */
   /* background-color: #e1c7c7; */
   width: 100%;
@@ -123,17 +126,16 @@ body{
 
 }
 
-#timeLine{
+/* #timeLine{
   background-color: aqua;
   border: solid yellow;
   width: 100%;
   height: 700px;
-  /* margin-left: 30%; */
-}
+} */
 
 #containerTitlePost{
   margin: 12px;
-  background-color: #c1baba;
+  background-color: #d8c54b;
   border-radius: 8px;
   box-shadow: 4px 0px 15px;
 }
@@ -141,14 +143,18 @@ body{
 #postTitle{
   /* margin: 10px,50px,5px,5px; */
   margin: 5px;
-  width: 95%;
+  width: 97%;
+  border-radius: 8px;
+  border: solid white;
 }
 
 #post{
-  width: 95%;
+  width: 97%;
   /* height: 100px; */
   height: 10ch;
   margin: 5px;
+  border-radius: 8px;
+  border: solid white;
   /* margin: 20%; */
   /* height: 70px; */
 }
@@ -158,10 +164,10 @@ body{
   justify-content: center;
   flex-direction: column;
   margin: 15px;
-  box-shadow: 4px 0px 15px;
+  /* box-shadow: 4px 0px 15px; */
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
-  /* align-items:center ; */
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  background-color: rgb(215, 77, 77);
 }
 
 #iconPhoto{
@@ -188,6 +194,7 @@ body{
 
 /* #descripComment{
   font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+  text-align: justify;
   font-size: 18px; 
   font-weight: 400; 
   text-align: center; 
@@ -217,16 +224,20 @@ body{
   /* appearance: none; */
   background-color: #d2bc2d;
   border: solid #d2bc2d;
+  /* background-color: #7de8f0;
+  border: solid #7de8f0; */
   border-radius: 4px;
   box-shadow: 4px 0px 15px;
-  width: 30%;
+  width: 40%;
+  height: 30px;
   /* font-weight: 500; */
   /* -webkit-transition-duration: 0.4s; 
   transition-duration: 0.4s; */
 }
 
 #containerbtnPost button:hover {
-  background-color: #d2bc2d; 
+  /* background-color: #d2bc2d;  */
+  /* background-color: #7de8f0;  */
   color: white;
   cursor: pointer;
 }
@@ -247,32 +258,32 @@ section{
 .btn-delete{
   width: 50%;
   margin: 5px;
-  background-color: #a1e7e7;
+  margin-bottom: 10px;
+  /* background-color: #a1e7e7;
+  border: #a1e7e7; */
+  background-color: #d2bc2d;
+  border: solid #d2bc2d;
   border-radius: 4px;
-  border: #a1e7e7;
   box-shadow: 4px 0px 15px;
-  cursor: pointer;
 }
 
 .btn-like:hover,
 .btn-edit:hover,
 .btn-delete:hover{
-  width: 50%;
-  margin: 5px;
-  background-color: #bbf0f0;
-  border-radius: 4px;
-  border: #bbf0f0;
-  box-shadow: 4px 0px 15px;
+  /* width: 50%;
+  margin: 5px; */
+  /* background-color: #bbf0f0;
+  border: #bbf0f0; */
+  /* border-radius: 4px; */
+  /* box-shadow: 4px 0px 15px; */
   cursor: pointer;
-  
+  background-color: #e4d36a;
+  border: solid #e4d36a;
 }
 
-#btnIcon{
+/* #btnIcon{
   width: 23%;
-  /* margin: 12px; */
-  /* border-radius: 8%; */
-  /* box-shadow: 4px 0px 15px; */
-}
+} */
 
 
 /* REGISTRO Y LOGIN */
@@ -357,7 +368,7 @@ section{
     text-align: center;
     color: #FFFFFF;
     font-family: 'Kameron';
-    margin-top: 80px;
+    /* margin-top: 50px; */
   }
 
   #btnGoogle{
@@ -388,13 +399,13 @@ section{
     justify-content: center;
     flex-direction: column;
     margin-left: 25%;
-    box-shadow: 4px 0px 15px;
+    /* box-shadow: 4px 0px 15px; */
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.5);
     /* align-items:center ; */
     width: 50%;
     /* margin: auto; */
-    border: solid beige;
+    /* border: solid beige; */
   }
 
   #titleComment{
@@ -411,15 +422,16 @@ section{
     /* overflow: scroll;  */
     padding: 20px; 
     /* height: 140px; */
-    border: 2px solid #ffffff;
+    border: solid #f2f0e2;
     /* border: solid green; */
   }
   #descripComment{
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    text-align: justify;
     font-size: 18px; 
     font-weight: 400; 
-    text-align: center; 
     background: #ffffff; 
+    text-align: justify;
     margin: 12px;
     /* width: 89%; */
     box-shadow: 4px 0px 15px;
@@ -437,21 +449,35 @@ section{
 
   /* PERFIL DE USUARIO */
 
+  #containerUser{
+    display: flex;
+    justify-content: center;
+  }
+
   #containerProfile{
     /* display: flex; */
+    background: linear-gradient(
+    180deg,
+    #d2bc2d 40%,
+    #ffffff 0%
+    /* rgba(172, 210, 253, 0.744792) 20%, */
+    /* rgb(228, 192, 65) 40% */
+    
+  );
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(214, 210, 210, 0.43);
-    margin: 15%;
-    height: 700px;
-    width: 75%;
+    /* background: rgba(214, 210, 210, 0.43); */
+    margin: 10% 0 0 28%;
+    height: 400px;
+    width: 45%;
     border-radius: 30px;
+    /* border: solid green; */
   }
 
   #userPhoto{
-    width: 30%;
+    width: 20%;
     border-radius: 140px;
     margin: 40px;
     /* margin: 10px; */
@@ -476,7 +502,8 @@ section{
   text-align: center;
   color: rgb(255, 255, 255);
   font-family: 'Kameron';
-  margin-top: 90px;
+  /* font-family: "Nunito Sans", sans-serif; */
+  margin-top: 80px;
 }
 
 #email{

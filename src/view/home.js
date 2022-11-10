@@ -25,7 +25,7 @@ const viewHome = {
           <form id="time-Line">
             <div id="containerTitlePost">
               <input type="text" id = "postTitle" placeholder="Título">
-              <textarea id="post" placeholder="Escribe aquí"></textarea><br>
+              <textarea id="post" placeholder="Escribe aquí..."></textarea><br>
             </div>
             <div id="containerbtnPost">
               <button id="btnPublicar">Publicar</button><br>
