@@ -135,19 +135,9 @@ body{
   background-image: url("./images/cocina_peruana_varios.webp");
   background-size: cover;
   background-attachment: fixed;
-  /* background-repeat: no-repeat; */
-  /* background-color: #e1c7c7; */
   width: 100%;
   height: 100vh;
-
 }
-
-/* #timeLine{
-  background-color: aqua;
-  border: solid yellow;
-  width: 100%;
-  height: 700px;
-} */
 
 #containerTitlePost{
   margin: 12px;
@@ -157,7 +147,6 @@ body{
 }
 
 #postTitle{
-  /* margin: 10px,50px,5px,5px; */
   margin: 5px;
   width: 94%;
   border-radius: 8px;
@@ -166,13 +155,10 @@ body{
 
 #post{
   width: 94%;
-  /* height: 100px; */
   height: 10ch;
   margin: 5px;
   border-radius: 8px;
   border: solid white;
-  /* margin: 20%; */
-  /* height: 70px; */
 }
 
 #containerComment{
@@ -180,10 +166,9 @@ body{
   justify-content: center;
   flex-direction: column;
   margin: 15px;
-  /* box-shadow: 4px 0px 15px; */
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
-  /* background-color: rgb(215, 77, 77); */
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  background-color: rgba(255, 255, 255, 0.742);
 }
 
 #iconPhoto{
@@ -194,18 +179,6 @@ body{
 }
 
 #titleComment{
-  /* font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
-    font-size: 18px; 
-    font-weight: 400; 
-    text-align: center; 
-    background: #ffffff; 
-    margin: 12px;
-    width: 89%;
-    box-shadow: 4px 0px 15px;
-    height: 4px;
-    padding: 20px; 
-    border: 2px solid #ffffff;
-    border: solid green; */
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
     font-size: 18px;
     font-weight: 400;
@@ -215,12 +188,9 @@ body{
     width: 80%;
     box-shadow: 4px 0px 15px;
     border-radius: 8px;
-    /* height: 4px; */
     /* overflow: scroll;  */
     padding: 20px; 
-    /* height: 140px; */
     border: solid #f2f0e2;
-    /* border: solid green; */
 }
 
 #descripComment{
@@ -234,10 +204,8 @@ body{
   width: 80%;
   box-shadow: 4px 0px 15px;
   border-radius: 8px;
-  /* height: 4px; */
   /* overflow: hidden;  */
   padding: 20px; 
-  /* height: 200px; */
   border: 2px solid #ffffff;
 }
 
@@ -253,11 +221,8 @@ body{
 #containerbtnPost button{
   
   margin: 7px;
-  /* appearance: none; */
   background-color: #d2bc2d;
   border: solid #d2bc2d;
-  /* background-color: #7de8f0;
-  border: solid #7de8f0; */
   border-radius: 4px;
   box-shadow: 4px 0px 15px;
   width: 40%;
@@ -302,12 +267,6 @@ section{
 .btn-like:hover,
 .btn-edit:hover,
 .btn-delete:hover{
-  /* width: 50%;
-  margin: 5px; */
-  /* background-color: #bbf0f0;
-  border: #bbf0f0; */
-  /* border-radius: 4px; */
-  /* box-shadow: 4px 0px 15px; */
   cursor: pointer;
   background-color: #e4d36a;
   border: solid #e4d36a;
@@ -341,7 +300,6 @@ section{
 .containerLogin{
   display: flex;
   align-items: center;
-  /* border: solid green; */
 }
 
 #form{
@@ -361,19 +319,13 @@ section{
 }
 
 .messageText{
-  /* margin-top: 40px; */
   font-size: large;
   margin-bottom: 20px;
   background-color: white;
-  /* padding: 10px; */
 }
 
 #time-Line{
-  /* border: solid brown; */
-  /* width: 50%; */
-  /* margin-left: 25%; */
   margin-top: 70px;
-  /* align-items: center; */
 }
 
 @media only screen and (min-width:600px){
@@ -415,15 +367,10 @@ section{
     text-align: center;
     color: #FFFFFF;
     font-family: 'Kameron';
-    /* box-shadow: 4px 0px 25px; */
     margin-bottom: 120px;
   }
 
   #btnGoogle{
-    /* position: absolute;
-    width: 8%;
-    left: 190px;
-    top: 540px; */
     margin: 12px;
     width: 1%;
   }
@@ -435,11 +382,20 @@ section{
   }
 
   #time-Line{
-    /* border: solid brown; */
     width: 50%;
     margin-left: 25%;
     margin-top: 100px;
-    /* align-items: center; */
+  }
+
+  #postTitle{
+    margin-top: 10px;
+    margin-left: 13px;
+  }
+
+  #post{
+    margin-left: 13px;
+    margin-bottom: 10px;
+
   }
 
   #containerComment{
@@ -447,13 +403,9 @@ section{
     justify-content: center;
     flex-direction: column;
     margin-left: 25%;
-    /* box-shadow: 4px 0px 15px; */
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    /* align-items:center ; */
+    background-color: rgba(255, 255, 255, 0.742);
     width: 50%;
-    /* margin: auto; */
-    /* border: solid beige; */
   }
 
   #titleComment{
@@ -466,12 +418,8 @@ section{
     width: 89%;
     box-shadow: 4px 0px 15px;
     border-radius: 8px;
-    /* height: 4px; */
-    /* overflow: scroll;  */
     padding: 20px; 
-    /* height: 140px; */
     border: solid #f2f0e2;
-    /* border: solid green; */
   }
   #descripComment{
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
@@ -483,10 +431,8 @@ section{
     margin: 12px;
     width: 89%;
     box-shadow: 4px 0px 15px;
-    /* height: 4px; */
     /* overflow: scroll;  */
     padding: 20px; 
-    /* height: 100px; */
     border: 2px solid #ffffff;
     max-width: 90%;
     border-radius: 8px;
@@ -503,7 +449,6 @@ section{
   }
 
   #containerProfile{
-    /* display: flex; */
     background: linear-gradient(
     180deg,
     #d2bc2d 40%,
@@ -516,20 +461,16 @@ section{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background: rgba(214, 210, 210, 0.43); */
     margin: 10% 0 0 28%;
     height: 400px;
     width: 45%;
     border-radius: 30px;
-    /* border: solid green; */
   }
 
   #userPhoto{
     width: 25%;
     border-radius: 140px;
     margin: 20px;
-    /* margin: 10px; */
-    /* margin: 50px; */
   }
 
   #userProfile{
@@ -551,7 +492,6 @@ section{
   text-shadow: 4px 0px 15px black;
   color: rgb(255, 255, 255);
   font-family: 'Kameron';
-  /* font-family: "Nunito Sans", sans-serif; */
   margin-top: 80px;
 }
 
@@ -566,6 +506,11 @@ section{
   font-style: italic;
   padding-left: 7px;
   margin-bottom: 17px;
+  color: #d2bc2d;
+}
+
+#email::placeholder{
+  color: white;
 }
 
 #password{
@@ -580,8 +525,11 @@ section{
   padding-left: 7px;
 }
 
+#password::placeholder{
+  color: white;
+}
+
 #login{
-  /* margin-bottom: 10px ; */
   cursor: pointer;
   border: none;
   border-radius: 10px;
@@ -589,30 +537,34 @@ section{
   height: 27px;
 }
 
+#login:hover{
+  background-color: #f5e2a8; 
+  border: solid #f5e2a8;
+}
+
 #register{
   margin-bottom: 20px;
   background-color: white;
   border: solid #ffffff;
   border-radius: 10px;
-  color: #d2bc2d;
   width: 60%;
   height: 27px;
   cursor: pointer;
-  /* box-shadow: 4px 0px 15px; */
+  text-decoration: none !important;
+}
+#register a{
+  text-decoration: none;
+  color: black;
 }
 
+
+
 #register:hover{
-  /* width: 32%;
-  height: 27px;
-  background-color: #ffffff; 
-  color: white; */
+  background-color: #f5e2a8; 
+  border: solid #f5e2a8;
 }
 
 #btnGoogle{
-  /* position: absolute;
-  width: 8%;
-  left: 190px;
-  top: 540px; */
   margin: 8px;
   width: 8%;
 }
@@ -632,10 +584,6 @@ section{
 }
 
 #inputUserName{
-  /* margin-top: 121px;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-bottom: 30px; */
   margin: 0px 50px 30px 50px;
   background: rgba(217, 217, 217, 0.25);
   border: 4px solid #FFFFFF;
@@ -645,6 +593,10 @@ section{
   font-style: italic;
   padding-left: 7px;
   height: 28px;
+}
+
+#inputUserName::placeholder{
+  color: white;
 }
 
 #inputEmail{
@@ -659,6 +611,10 @@ section{
   padding-left: 7px;
 }
 
+#inputEmail::placeholder{
+  color: white;
+}
+
 #inputPassword{
   margin: 0 50px 50px 50px;
   background: rgba(217, 217, 217, 0.25);
@@ -671,42 +627,43 @@ section{
   padding-left: 7px;
 }
 
+#inputPassword::placeholder{
+  color: white;
+}
+
 #btnRegister{
-  /* width: 60%;
-  height: 28px;
-  background-color: white;
-  border: solid #ffffff;
-  border-radius: 10px;
-  margin: 0 50px 30px 50px; */
   margin-bottom: 20px;
   background-color: white;
   border: solid #ffffff;
   border-radius: 10px;
-  /* color: #d2bc2d; */
-  /* box-shadow: 4px 0px 15px; */
   width: 60%;
   height: 27px;
   cursor: pointer;
 }
 
+#btnRegister:hover{
+  background-color: #f5e2a8;
+  border: solid #f5e2a8;
+}
+
 #btnIniciar{
-  /* margin-top: 15px ; */
-  /* margin-bottom: 180px; */
   margin: 0 50px 50px 50px;
-  /* width: 60%;
-  height: 280px;
-  border-radius: 10px;
-  background-color: white;
-  border: solid #ffffff;
-  color: #d2bc2d; */
-  /* margin-bottom: 20px; */
   background-color: white;
   border: solid #ffffff;
   border-radius: 10px;
-  /* color: #d2bc2d; */
   width: 60%;
   height: 27px;
   cursor: pointer;
+}
+
+#btnIniciar:hover{
+  background-color: #f5e2a8;
+  border: solid #f5e2a8;
+}
+
+#btnIniciar a{
+  text-decoration: none;
+  color: black;
 }
 
 
